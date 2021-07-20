@@ -1,0 +1,168 @@
+create table tipoUsuario(
+	id int not null auto_increment,
+	tipo varchar(15),
+	constraint tipoUsuario_id_pk primary key(id)
+);
+
+create table usuario(
+	id int not null auto_increment,
+	nome varchar(70) not null,
+	email varchar(255) not null,
+	senha varchar(255) not null,
+	nomeUnico varchar(255) not null,
+	dataRegistro date not null,
+	fotoPerfil varchar(255),
+	numeroTopicos int not null default 0,
+	numeroPosts int not null default 0,
+	numeroLikes int not null default 0,
+	numeroInscricoes int not null default 0,
+	numeroAmigos int not null default 0,
+	descricaoPerfil varchar(255) null,
+	tipoUsuario int default 1,
+	constraint usuario_id_pk primary key(id),
+	constraint usuario_tipoUsuario_fk foreign key(tipoUsuario) references tipoUsuario(id)
+);
+
+create table mensagem(
+	id int not null auto_increment,
+	enviadoPor int,
+	enviadoPara int,
+	mensagem text,
+	data datetime,
+	constraint mensagem_id_pk primary key(id),
+	constraint mensagem_enviadoPor_fk foreign key(enviadoPor) references usuario(id),
+	constraint mensagem_enviadoPara_fk foreign key(enviadoPara) references usuario(id)
+);
+
+create table reqAmizade(
+	id int not null auto_increment,
+	deUsuario int,
+	paraUsuario int,
+	constraint reqAmizade_id_pk primary key(id),
+	constraint reqAmizade_deUsuario_fk foreign key(deUsuario) references usuario(id),
+	constraint reqAmizade_paraUsuario_fk foreign key(paraUsuario) references usuario(id)
+);
+
+create table amigos(
+	id int not null auto_increment,
+	usuario int,
+	amigo int,
+	constraint amigos_id_pk primary key(id),
+	constraint amigos_usuario_fk foreign key(usuario) references usuario(id),
+	constraint amigos_amigo_fk foreign key(amigo) references usuario(id)
+);
+
+create table comunidade(
+	id int not null auto_increment,
+	nome varchar(50) not null,
+	descricao varchar(200) not null,
+	fotoComunidade varchar(255),
+	nomeUnico varchar(255) not null,
+	numeroTopicos int not null default 0,
+	numeroPosts int not null default 0,
+	numeroLikes int not null default 0,
+	numeroInscritos int not null default 0,
+	criadoPor int,
+	dataCriacao date,
+	dataUltimoTopico datetime,
+	regras text,
+	constraint comunidade_id_pk primary key(id),
+	constraint comunidade_criadoPor_fk foreign key(criadoPor) references usuario(id)
+);
+
+create table comunidadeModerador(
+	id int not null auto_increment,
+	moderador int,
+	comunidade int,
+	constraint comunidadeModerador_id_pk primary key(id),
+	constraint comunidadeModerador_moderador_fk foreign key(moderador) references usuario(id),
+	constraint comunidadeModerador_comunidade_fk foreign key(comunidade) references comunidade(id)
+);
+
+create table reqModeradorUsuario(
+	id int not null auto_increment,
+    moderador int,
+    usuario int,
+    comunidade int,
+    constraint reqModUs_id_pk primary key(id),
+    constraint reqModUs_moderador_fk foreign key(moderador) references usuario(id),
+    constraint reqModUs_usuario_fk foreign key(usuario) references usuario(id),
+    constraint reqModUs_comunidade_fk foreign key(comunidade) references comunidade(id)
+);
+
+create table reqAdminUsuario(
+	id int not null auto_increment,
+    admin int,
+    usuario int,
+    constraint reqAdm_id_pk primary key(id),
+    constraint reqAdm_admin_fk foreign key(admin) references usuario(id),
+    constraint reqAdm_usuario_fk foreign key(usuario) references usuario(id)
+);
+
+create table inscricao(
+	id int not null auto_increment,
+	usuario int,
+	comunidade int,
+	constraint inscricao_id_pk primary key(id),
+	constraint inscricao_usuario_fk foreign key(usuario) references usuario(id),
+	constraint inscricao_comunidade_fk foreign key(comunidade) references comunidade(id)
+);
+
+create table topico(
+	id int not null auto_increment,
+	titulo varchar(90) not null,
+	conteudo text not null,
+	tipoArquivo varchar(15) not null,
+	arquivo text null,
+	dataCriacao datetime,
+	dataUltimoPost datetime,
+	numeroPosts int not null default 0,
+	numeroLikes int not null default 0,
+	criadoPor int,
+	naComunidade int,
+	constraint topico_id_pk primary key(id),
+	constraint topico_criadoPor_fk foreign key(criadoPor) references usuario(id),
+	constraint topico_naComunidade_fk foreign key(naComunidade) references comunidade(id)
+);
+
+create table post(
+	id int not null auto_increment,
+	postadoPor int,
+	conteudo text,
+	noTopico int,
+	noPost int,
+	dataPostagem datetime,
+	numeroLikes int default 0,
+	numeroRespostas int default 0,
+	constraint post_id_pk primary key(id),
+	constraint post_postadoPor_fk foreign key(postadoPor) references usuario(id),
+	constraint post_noTopico_fk foreign key(noTopico) references topico(id)
+);
+
+create table botaoLike(
+	id int not null auto_increment,
+	dataLike datetime,
+	logUsuario int,
+	noUsuario int,
+	noTopico int,
+	noPost int,
+	comunidadeTopico int,
+	constraint botaoLike_id_pk primary key(id),
+	constraint botaoLike_logUsuario_fk foreign key(logUsuario) references usuario(id),
+	constraint botaoLike_noUsuario_fk foreign key(noUsuario) references usuario(id),
+	constraint botaoLike_noTopico_fk foreign key(noTopico) references topico(id),
+	constraint botaoLike_noPost_fk foreign key(noPost) references post(id),
+	constraint post_comunTop_fk foreign key(comunidadeTopico) references comunidade(id)
+);
+
+INSERT INTO tipoUsuario(id, tipo) VALUES('1', 'usuario');
+INSERT INTO tipoUsuario(id, tipo) VALUES('2', 'moderador');
+INSERT INTO tipoUsuario(id, tipo) VALUES('3', 'administrador');
+INSERT INTO tipoUsuario(id, tipo) VALUES('4', 'restaurar');
+
+INSERT INTO `usuario`(`id`, `nome`, `email`, `senha`, `dataRegistro`, `fotoPerfil`, `tipoUsuario`, `nomeUnico`) VALUES ('1', 'admin', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', '2020-03-18' , 'assets/imagens/icones/fotoPerfilPadrao.png', '3', 'admin');
+INSERT INTO `usuario`(`id`, `nome`, `email`, `senha`, `dataRegistro`, `fotoPerfil`, `tipoUsuario`, `nomeUnico`) VALUES ('2', 'restaurar', 'schmoetropin@schmoetropin.com', 'bc95346a88a94cd04167df629c5c0acd', '2020-03-18' , 'assets/imagens/icones/fotoPerfilPadrao.png', '4', 'restaurar');
+
+INSERT INTO `comunidade`(`id`, `nome`, `descricao`, `fotoComunidade`, `nomeUnico`) VALUES ('-50', 'admin e moderacao', 'comunidade destinada para discussao de ideias ou problemas sobre o forum', 'assets/imagens/icones/adminComunidade.jpg', 'admin_e_moderacao');
+
+INSERT INTO `inscricao`(`usuario`, `comunidade`) VALUES('1', '-50');
