@@ -1,3 +1,7 @@
+create database forumdb;
+
+use forumdb;
+
 create table tipoUsuario(
 	id int not null auto_increment,
 	tipo varchar(15),

@@ -234,7 +234,7 @@
 
 .topicoBarraDireita .topicoComunidadeDetalhes button,
 .comunidadeColunaPrincipal .comunidadeBarraDireita .descricaoComunidade #areaInscricao button,
-.comunidadeColunaPrincipal .comunidadeBarraDireita .descricaoComunidade #botaoCriarTopico {
+.comunidadeColunaPrincipal .comunidadeBarraDireita .descricaoComunidade .botaoCriarTopico {
 	height: 3em;
 	width: 10em;
 	margin: 6px 0;

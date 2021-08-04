@@ -90,29 +90,34 @@ $(document).ready(function(){
 					fd.append('fotoComunidade', arquivo);
 			}
 			var ajax = new XMLHttpRequest();
-			
-			ajax.addEventListener('load', function(e){
-				_('fotoCriacaoComunidade').value = '';
-				_('nomeComunidade').value = '';
-				_('descricaoComunidade').value = '';
-				_q('.contadorNomeComunidade').innerHTML = '';
-				_q('.contadorDescricaoComunidade').innerHTML = '';
-				_('pevImagCom').src = '';
-				exibirComunidades();
-				_('mensagemComunidade').innerHTML = this.responseText;
-			}, false);
-			
-			ajax.addEventListener('abort', function(e){
-				console.log('abort');
-			}, false);
-			
-			ajax.addEventListener('error', function(e){
-				console.log('error');
-			}, false);
+			ajax.onreadystatechange = function(evt){
+				if(ajax.readyState === 4 && ajax.status === 200){
+					_('fotoCriacaoComunidade').value = '';
+					_('nomeComunidade').value = '';
+					_('descricaoComunidade').value = '';
+					_q('.contadorNomeComunidade').innerHTML = '';
+					_q('.contadorDescricaoComunidade').innerHTML = '';
+					_('pevImagCom').src = '';
+					exibirComunidades();
+					_('mensagemErroComunidadeDiv').style.display = 'block';
+					_('fundoOpacoMensagemComunidadeErro').style.display = 'block';
+					_('mensagemCriarComunidadeDiv').innerHTML = this.responseText;
+				}
+			}
 			ajax.open('POST', comuH);
 			ajax.send(fd);
 		});
 	}
+
+	function fecharCriarComunidadeMes(){
+		if(_('fecharCriarComunidadeMes')){
+			_('fecharCriarComunidadeMes').addEventListener('click',function(){
+				_('mensagemErroComunidadeDiv').style.display = 'none';
+				_('fundoOpacoMensagemComunidadeErro').style.display = 'none';
+			});
+		}
+	}
+	fecharCriarComunidadeMes();
 	
 	function contadorTamanhoComunidadeTituloEDescricao(){
 		$('#nomeComunidade').on('change paste keyup', function(){

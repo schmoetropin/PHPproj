@@ -27,8 +27,12 @@ if(empty($checarIncludeRequire)){
 			<small>Descricao da comunidade minimo 3 caracteres e maximo 150</small>
 			<textarea name="descricaoComunidade" id="descricaoComunidade" rows="8" cols="58" placeholder="Descricao da comunidade"></textarea><br>
 			<div class="contadorDescricaoComunidade"></div>
-			<div id="mensagemComunidade"></div>
 			<input type="submit" name="inputCriarComunidade" id="inputCriarComunidade" class="btn btnAzul" value="Criar"><br>
 		</form>
 	</div>
 </div>
+<div class="mensagemErroDiv" id="mensagemErroComunidadeDiv">
+	<div id="mensagemCriarComunidadeDiv" class="mensagemErro"></div>
+	<button id="fecharCriarComunidadeMes" class="btn btnVermelho">ok</button>
+</div>
+<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemComunidadeErro"></div>

@@ -23,7 +23,6 @@ if(empty($checarIncludeRequire)){
 						<input type="file" id="trocarFotoPerfil" name="trocarFotoPerfil" required>
 						<input type="submit" id="trocarFotoPerfilBotao" class="btn btnAzul" name="trocarFotoPerfilBotao" value="trocar foto">
 					</form>
-					<div id="fotoPerfilMensagem"></div>
 				</div>
 				<div class="tNome">
 					<p>Trocar nome:</p>
@@ -31,7 +30,6 @@ if(empty($checarIncludeRequire)){
 						<input type="text" id="trocarNome" name="trocarNome" placeholder="Nome" required>
 						<input type="submit" id="trocarNomeBotao" class="btn btnAzul" value="trocar nome">
 					</form>
-					<div id="nomeMensagem"></div>
 				</div>
 				<div class="tEmail">
 					<p>Trocar email:</p>
@@ -40,7 +38,6 @@ if(empty($checarIncludeRequire)){
 						<input type="email" id="trocarEmail2" name="trocarEmail2" placeholder="Confirmar Email" required>
 						<input type="submit" id="trocarEmailBotao" class="btn btnAzul" value="trocar Email">
 					</form>
-					<div id="emailMensagem"></div>
 				</div>
 				<div class="tSenha">
 					<p>Trocar senha:</p>
@@ -49,7 +46,6 @@ if(empty($checarIncludeRequire)){
 						<input type="password" id="trocarSenha2" name="trocarSenha2" placeholder="Confirmar senha" required>
 						<input type="submit" id="trocarSenhaBotao" class="btn btnAzul" value="trocar senha">
 					</form>
-					<div id="senhaMensagem"></div>
 				</div>
 				<div class="tDescricao">
 					<p>Descricao:</p>
@@ -57,7 +53,6 @@ if(empty($checarIncludeRequire)){
 						<textarea id="trocarDescricao" name="trocarDescricao" rows="10"></textarea><br>
 						<input type="submit" id="trocarDescricaoBotao" class="btn btnAzul" value="postar descricao">
 					</form>
-					<div id="descricaoMensagem"></div>
 				</div>
 			</div><?php	
 		}else{?>
@@ -79,7 +74,6 @@ if(empty($checarIncludeRequire)){
 							<input type="file" id="trocarFotoPerfil" name="trocarFotoPerfil" required>
 							<input type="submit" id="trocarFotoPerfilBotao" class="btn btnAzul" name="trocarFotoPerfilBotao" value="trocar foto">
 						</form>
-						<div id="fotoPerfilMensagem"></div>
 					</div>
 					<div class="tNome">
 						<p>Trocar nome:</p>
@@ -87,7 +81,6 @@ if(empty($checarIncludeRequire)){
 							<input type="text" id="trocarNome" name="trocarNome" placeholder="Nome" required>
 							<input type="submit" id="trocarNomeBotao" class="btn btnAzul" value="trocar nome">
 						</form>
-						<div id="nomeMensagem"></div>
 					</div>
 					<div class="tDescricao">
 						<p>Descricao:</p>
@@ -95,7 +88,6 @@ if(empty($checarIncludeRequire)){
 							<textarea id="trocarDescricao" name="trocarDescricao" rows="10"></textarea><br>
 							<input type="submit" id="trocarDescricaoBotao" class="btn btnAzul" value="postar descricao">
 						</form>
-						<div id="descricaoMensagem"></div>
 					</div>
 				</div>
 	<?php	}
@@ -110,3 +102,8 @@ if(empty($checarIncludeRequire)){
 		</div><?php 
 	}?>
 </div>
+<div class="mensagemErroDiv" id="mensagemErroPerfilDiv">
+	<div id="mensagemPerfilDiv" class="mensagemErro"></div>
+	<button id="fecharPerfilMes" class="btn btnVermelho">ok</button>
+</div>
+<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemPerfilErro"></div>

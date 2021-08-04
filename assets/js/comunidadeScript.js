@@ -7,20 +7,16 @@ $(document).ready(function(){
 		var comunidade = _('comunidade').value;
 		// checa se usuario esta logado anted de criar topico
 		function botaoCriarTopico(){
-			if(_('botaoCriarTopico')){
-				$('.botaoCriarTopico').each(function(){
-					$(this).click(function(){
-						var user = _('logUsuario').value;
-						if(user == 'nenhum'){
-							_('caixaRegistro').style.display = 'block';
-							_q('.fundoOpacoPadrao').style.display = 'block';
-							_q('body').style.overflow = 'hidden';
-						}else{
-							_q('.fundoOpacoPadrao').style.display = 'block';
-							_('criarTopicoCaixa').style.display = 'block';
-							_q('body').style.overflow = 'hidden';
-						}
-					});
+			if(_('botaoCriarTopicoDe')){
+				_('botaoCriarTopicoDe').addEventListener('click',function(){
+					_q('.fundoOpacoPadrao').style.display = 'block';
+					_('criarTopicoCaixa').style.display = 'block';
+					_q('body').style.overflow = 'hidden';
+				});
+				_('botaoCriarTopicoSm').addEventListener('click',function(){
+					_q('.fundoOpacoPadrao').style.display = 'block';
+					_('criarTopicoCaixa').style.display = 'block';
+					_q('body').style.overflow = 'hidden';
 				});
 			}
 		}
@@ -28,7 +24,7 @@ $(document).ready(function(){
 
 		// fechar criacao topico
 		function fecharCaixaTopico(){
-			if(_('fecharCriarTopicoCaixa')){	
+			if(_('fecharCriarTopicoCaixa')){
 				_('fecharCriarTopicoCaixa').addEventListener('click', function(){
 					_q('.fundoOpacoPadrao').style.display = 'none';
 					_('criarTopicoCaixa').style.display = 'none';
@@ -37,6 +33,17 @@ $(document).ready(function(){
 			}
 		}
 		fecharCaixaTopico();
+	
+		function fecharCriarTopMes(){
+			if(_('fecharCriarTopMes')){
+				_('fecharCriarTopMes').addEventListener('click',function(){
+					_q('.mensagemErro').style.display = 'none';
+					_q('.fundoOpacoMensagemErro').style.display = 'none';
+				});
+			}
+		}
+		fecharCriarTopMes();
+		
 		// criar topico
 		function criarTopico(){
 			if(_('postarTopico')){	
@@ -50,46 +57,49 @@ $(document).ready(function(){
 							fd.append('topicoUpload', arquivo);
 					}
 					var ajax = new XMLHttpRequest();
-
 					ajax.upload.addEventListener('progress', function(e){
 						var porcentagem = Math.floor((e.loaded / e.total) * 100);
 						_('detalhesUpload').style.display = 'block';
 						_('uploadProgressoTexto').innerHTML = porcentagem+'%: '+e.loaded+' bytes de '+e.total;
 						_('uploadBarraDeProgresso').style.width = porcentagem+'%';
 					}, false);
-					
-					ajax.addEventListener('load', function(e){
-						exibitTodosOsTopicos();
-						_('tituloTopico').value = '';
-						_('tituloTopico').style.borderColor = '#DCDCDC';
-						_('conteudoTopico').value = '';
-						_('conteudoTopico').style.borderColor = '#DCDCDC';
-						_q('.semMidiaForm').checked = 'true';
-						_('topicoUpload').value = '';
-						_('topicoUpload').style.display = 'none';
-						_('topicoLink').value = '';
-						_('topicoLink').style.display = 'none';
-						_('detalhesUpload').style.display = 'none';
-						_q('.previsualizacaoMidia').innerHTML = '';
-						_q('.contadorTituloTopico').innerHTML = '';
-						_q('.contadorConteudoTopico').innerHTML = '';
-						window.alert(this.responseText);
-					}, false);
-					
-					ajax.addEventListener('abort', function(e){
-						console.log('abort');
-					}, false);
-					
-					ajax.addEventListener('error', function(e){
-						console.log('error');
-					}, false);
-					
+					ajax.onreadystatechange = function(evnt){
+						if(ajax.readyState === 4 && ajax.status === 200){
+							exibitTodosOsTopicos();
+							_('mensagemErroDivCriarTopico').style.display = 'block';
+							_('fundoOpacoMensagemErroCriarTopico').style.display = 'block';
+							_('tituloTopico').value = '';
+							_('tituloTopico').style.borderColor = '#DCDCDC';
+							_('conteudoTopico').value = '';
+							_('conteudoTopico').style.borderColor = '#DCDCDC';
+							_q('.semMidiaForm').checked = 'true';
+							_('topicoUpload').value = '';
+							_('topicoUpload').style.display = 'none';
+							_('topicoLink').value = '';
+							_('topicoLink').style.display = 'none';
+							_('detalhesUpload').style.display = 'none';
+							_q('.previsualizacaoMidia').innerHTML = '';
+							_q('.contadorTituloTopico').innerHTML = '';
+							_q('.contadorConteudoTopico').innerHTML = '';
+							_('mensagemPostarTopicoDiv').innerHTML = this.responseText;
+						}
+					}
 					ajax.open('POST', topH);
 					ajax.send(fd);
 				});
 			}
 		}
 		criarTopico();
+
+		function fecharCriarTopMes(){
+			if(_('fecharCriarTopMes')){
+				_('fecharCriarTopMes').addEventListener('click',function(){
+					_('mensagemErroDivCriarTopico').style.display = 'none';
+					_('fundoOpacoMensagemErroCriarTopico').style.display = 'none';
+					_q('body').style.overflow = 'auto';
+				});
+			}
+		}
 
 		function contadorTamanhoComunidadeTituloEDescricao(){
 			$('#tituloTopico').on('change paste keyup', function(){
@@ -287,18 +297,17 @@ $(document).ready(function(){
 					fd.append('arquivoEditarFoto', arquivo);
 					if(arquivo.length > 0){
 						var ajax = new XMLHttpRequest();
-						ajax.addEventListener('load',function(){
-							exibirFotoNomeDescricaoComunidade();
-							_('editFotoComunNovaPrev').src = '';
-							_('arquivoEditarFoto').value = '';
-							_('editComunidadeImagemMensagem').innerHTML = this.responseText;
-						}, false);
-						ajax.addEventListener('abort',function(){
-							console.log('abort');
-						}, false);
-						ajax.addEventListener('error',function(){
-							console.log('error');
-						}, false);
+						ajax.onreadystatechange = function(evt){
+							if(ajax.readyState === 4 && ajax.status === 200){
+								exibirFotoNomeDescricaoComunidade();
+								_('editFotoComunNovaPrev').src = '';
+								_('arquivoEditarFoto').value = '';
+								_('mensagemEditarComunidadeDiv').innerHTML = this.responseText;
+								_('mensagemErroEditarComunidadeDiv').style.display = 'block';
+								_('fundoOpacoMensagemEditarComunidadeErro').style.display = 'block';
+								_q('body').style.overflow = 'hidden';
+							}
+						}
 						ajax.open('POST', comH);
 						ajax.send(fd);
 					}else
@@ -318,7 +327,10 @@ $(document).ready(function(){
 					success: function(data){
 						exibirFotoNomeDescricaoComunidade();
 						_('txtaEditarDescricao').value = '';
-						_('editComunidadeNomeMensagem').innerHTML = data;
+						_('mensagemEditarComunidadeDiv').innerHTML = data;
+						_('mensagemErroEditarComunidadeDiv').style.display = 'block';
+						_('fundoOpacoMensagemEditarComunidadeErro').style.display = 'block';
+						_q('body').style.overflow = 'hidden';
 					}
 				});
 			});
@@ -335,12 +347,26 @@ $(document).ready(function(){
 					success: function(data){
 						exibirFotoNomeDescricaoComunidade();
 						_('inputEditarNome').value = '';
-						_('editComunidadeDescricaoMensagem').innerHTML = data;
+						_('mensagemEditarComunidadeDiv').innerHTML = data;
+						_('mensagemErroEditarComunidadeDiv').style.display = 'block';
+						_('fundoOpacoMensagemEditarComunidadeErro').style.display = 'block';
+						_q('body').style.overflow = 'hidden';
 					}
 				});
 			});
 		}
 		trocarDescricaoComunidade();
+
+		function fecharEditarComunidadeMes(){
+			if(_('fecharEditarComunidadeMes')){
+				_('fecharEditarComunidadeMes').addEventListener('click',function(){
+					_('mensagemErroEditarComunidadeDiv').style.display = 'none';
+					_('fundoOpacoMensagemEditarComunidadeErro').style.display = 'none';
+					_q('body').style.overflow = 'auto';
+				});
+			}
+		}
+		fecharEditarComunidadeMes();
 
 		function contadorEditTamanhoComunidadeTituloEDescricao(){
 			$('#inputEditarNome').on('change paste keyup', function(){

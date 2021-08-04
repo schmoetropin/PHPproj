@@ -74,17 +74,13 @@ $(document).ready(function(){
 				var form = _('aceitarModRequisicaoForm'+id);
 				var fd = new FormData(form);
 				var ajax = new XMLHttpRequest();
-				ajax.addEventListener('load',function(e){
-					_('reqModRecebidaArea').innerHTML = this.responseText;
-					exibirModRequisicaoRecebida();
-					criarTipoUsuarioHiddenInput();
-				},false);
-				ajax.addEventListener('abort',function(){
-					console.log('abort');
-				},false);
-				ajax.addEventListener('error',function(){
-					console.log('error');
-				},false);
+				ajax.onreadystatechange = function(evt){
+					if(ajax.readyState === 4 && ajax.status === 4){
+						_('reqModRecebidaArea').innerHTML = this.responseText;
+						exibirModRequisicaoRecebida();
+						criarTipoUsuarioHiddenInput();
+					}
+				}
 				ajax.open('POST',modH);
 				ajax.send(fd);
 			});
@@ -199,17 +195,13 @@ $(document).ready(function(){
 					var form = _('carcelarReqModForm'+id);
 					var fd = new FormData(form);
 					var ajax = new XMLHttpRequest();
-					ajax.addEventListener('load',function(){
-						exibirModRequisicaoEnviada();
-						exibirModRequisicaoEnviadaUsuario();
-						exibirModRequerimentoForm();
-					},false);
-					ajax.addEventListener('abort',function(){
-						console.log('abort');
-					},false);
-					ajax.addEventListener('error',function(){
-						console.log('error');
-					},false);
+					ajax.onreadystatechange = function(evt){
+						if(ajax.readyState === 4 && ajax.status === 4){
+							exibirModRequisicaoEnviada();
+							exibirModRequisicaoEnviadaUsuario();
+							exibirModRequerimentoForm();
+						}
+					}
 					ajax.open('POST', modH);
 					ajax.send(fd);
 				});
@@ -225,18 +217,14 @@ $(document).ready(function(){
 					var form = _('recusarCargModeradorForm'+id);
 					var fd = new FormData(form);
 					var ajax = new XMLHttpRequest();
-					ajax.addEventListener('load',function(e){
-						if(this.responseText === "<p class='mensagemErro'>*Voce e o unico moderador da comunidade</p>")
-							_('sairModComunidadeMens'+id).innerHTML = this.responseText;
-						else
-							criarTipoUsuarioHiddenInput();
-					},false);
-					ajax.addEventListener('abort',function(e){
-						console.log('abort');
-					},false);
-					ajax.addEventListener('error',function(e){
-						console.log('error');
-					},false);
+					ajax.onreadystatechange = function(evt){
+						if(ajax.readyState === 4 && ajax.status === 4){
+							if(this.responseText === "<p class='mensagemErro'>*Voce e o unico moderador da comunidade</p>")
+								_('sairModComunidadeMens'+id).innerHTML = this.responseText;
+							else
+								criarTipoUsuarioHiddenInput();
+						}
+					}
 					ajax.open('POST', modH);
 					ajax.send(fd);
 				});

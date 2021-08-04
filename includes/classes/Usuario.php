@@ -157,7 +157,9 @@
 			if($checar){
 				$query = $this->con()->prepare("UPDATE usuario SET nome='$nome' WHERE id='$this->usuarioId'");
 				$query->execute();
-			}			
+				return true;
+			}
+			return false;
 		}
 		
 		public function setEmail($val, $val2){
@@ -167,7 +169,9 @@
 			if($checar){
 				$query = $this->con()->prepare("UPDATE usuario SET email='$email' WHERE id='$this->usuarioId'");
 				$query->execute();
+				return true;
 			}			
+			return false;
 		}
 		
 		public function setSenha($val, $val2){
@@ -177,7 +181,9 @@
 			if($checar){
 				$query = $this->con()->prepare("UPDATE usuario SET senha='$senha' WHERE id='$this->usuarioId'");
 				$query->execute();
+				return true;
 			}		
+			return false;
 		}
 		
 		public function setDescricaoPerfil($val){
@@ -186,7 +192,9 @@
 			if($checar){
 				$query = $this->con()->prepare("UPDATE usuario SET descricaoPerfil='$descricao' WHERE id='$this->usuarioId'");
 				$query->execute();
+				return true;
 			}	
+			return false;
 		}
 		
 		public function setFotoPerfil($val){
@@ -198,7 +206,9 @@
 				}
 				$query = $this->con()->prepare("UPDATE usuario SET fotoPerfil='$fotoPerfil' WHERE id='$this->usuarioId'");
 				$query->execute();
+				return true;
 			}
+			return false;
 		}
 		
 		public function setNumeroPosts($val){

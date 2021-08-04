@@ -10,14 +10,12 @@
 <div class="editarTopico">
 	<img src="assets/imagens/icones/close.png" id="fecharEditarTopico" class="botaoFecharPadrao">
 	<img src="assets/imagens/icones/edit.png" id="editarTopicoLogo"><h4>Editar topico</h4>
-	
 	<div class="editarTopicoEncapForm">
 		<form method="POST" id="editarTituloTopico" onsubmit="return false">
 			<input type="hidden" id="topPagId" name="topPagId" value="<?php echo $_GET['t'];?>">
 			<small>Titulo do topico precisa estar entre 4 e 90 caracteres</small>
 			<input type="text" name="editarTitulo" id="editarTitulo" placeholder="Editar titulo" value="">
 			<div class="contadorEditarTopicoTitulo"></div>
-			<div id="editarTituloMensagem" class="editarTopicoMensagem"></div>
 			<input type="submit" id="editarTituloTopicoBotao" class="btn btnVermelho btnEditarTopico" value="editar titulo">
 		</form><hr class="barraDivEditTop">
 		<form method="POST" id="editarMidiaTopico" enctype="multipart/form-data" onsubmit="return false">
@@ -51,7 +49,6 @@
 				<input type="file" name="editarArquivo" id="topicoUpload" style="display: none;">
 				<input type="text" name="topicoLink" id="topicoLink" placeholder="" style="display: none;"><br>
 			</div>
-			<div id="editarMidiaMensagem" class="editarTopicoMensagem"></div>
 			<input type="submit" id="editarMidiaTopicoBotao" class="btn btnVermelho btnEditarTopico" value="editar midia">
 		</form><hr class="barraDivEditTop">
 		<form method="POST" id="editarConteudoTopico" onsubmit="return false">
@@ -59,8 +56,12 @@
 			<small>Conteudo do topico precisa ser maior que 2 caracteres</small>
 			<textarea name="editarConteudo" id="editarConteudo" placeholder="Editar conteudo"></textarea>
 			<div class="contadorEditarTopicoConteudo"></div>
-			<div id="editarConteudoMensagem" class="editarTopicoMensagem"></div>
 			<input type="submit" id="editarConteudoTopicoBotao" class="btn btnVermelho btnEditarTopico" value="editar conteudo">
 		</form>
 	</div>
 </div>
+<div class="mensagemErroDiv" id="mensagemErroDivEditarTopico">
+	<div id="editarTopicoMensagem" class="mensagemErro"></div>
+	<button id="fecharEditarTopicoMes" class="btn btnVermelho">ok</button>
+</div>
+<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemErroEditarTopico"></div>

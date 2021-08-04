@@ -1,6 +1,7 @@
 /*************************
 *** FUNDO
 *************************/
+.fundoOpacoMensagemErro,
 .fundoOpacoPadrao {
 	top: 0;
 	left: 0;
@@ -12,6 +13,7 @@
 	display: none;
 	z-index: 98;
 }
+.fundoOpacoMensagemErro{ z-index: 110;}
 
 /*************************
 *** BOTAO FECHAR
@@ -180,7 +182,7 @@
 *************************/
 #criarTopicoCaixa {
 	position: fixed;
-	top: 30px;
+	top: 2%;
 	min-height: 590px;
 	width: 80%;
 	max-width: 1015px;

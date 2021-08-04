@@ -11,7 +11,6 @@ if(empty($checarIncludeRequire)){
 	<img src="assets/imagens/icones/topic-512.png" class="topicoIconeTopo">
 	<h2>novo topico</h2>
 	<img src="assets/imagens/icones/close.png" id="fecharCriarTopicoCaixa" class="botaoFecharPadrao">
-	<div id="criarTopicoMensagem"></div>
 	<form id="postarTopicoForm" method="POST" enctype="multipart/form-data" onsubmit="return false">
 		<small style="margin-left: 3%;">Titulo do topico precisa estar entre 4 e 90 caracteres</small><br>
 		<input type="text" name="tituloTopico" id="tituloTopico" placeholder="Titulo do topico" required><br>
@@ -48,3 +47,8 @@ if(empty($checarIncludeRequire)){
 		<input type="submit" class="btn btnAzul" name="postarTopico" id="postarTopico" value="Criar Topico">
 	</form>
 </div>
+<div class="mensagemErroDiv" id="mensagemErroDivCriarTopico">
+	<div id="mensagemPostarTopicoDiv" class="mensagemErro"></div>
+	<button id="fecharCriarTopMes" class="btn btnVermelho">ok</button>
+</div>
+<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemErroCriarTopico"></div>

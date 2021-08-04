@@ -20,20 +20,16 @@ $(document).ready(function(){
 				arquivo = _('trocarFotoPerfil').files;
 				if(arquivo.length > 0){
 					fd.append('trocarFotoPerfil', arquivo);
-					ajax.addEventListener('load', function(e){
-						_('fotoPerfilMensagem').innerHTML = this.responseText;
-						exibirFoto();
-						_('trocarFotoPerfil').value = '';
-					}, false);
-
-					ajax.addEventListener('abort', function(e){
-						console.log('abort');
-					}, false);
-
-					ajax.addEventListener('error', function(e){
-						console.log('error');
-					}, false);
-
+					ajax.onreadystatechange = function(evt){
+						if(ajax.readyState === 4 && ajax.status === 4){
+							exibirFoto();
+							_('trocarFotoPerfil').value = '';
+							_('mensagemPerfilDiv').innerHTML = this.responseText;
+							_('mensagemErroPerfilDiv').style.display = 'block';
+							_('fundoOpacoMensagemPerfilErro').style.display = 'block';
+							_q('body').style.overflow = 'hiddden';
+						}
+					}
 					ajax.open('POST', perfH);
 					ajax.send(fd);
 				}else
@@ -46,7 +42,10 @@ $(document).ready(function(){
 	$('#trocarNomeBotao').click(function(){
 		$.post(perfH, { trocarNome: trocarNomeForm.trocarNome.value},
 		function(resultado){
-			$('#nomeMensagem').html(resultado).show();
+			_('mensagemPerfilDiv').innerHTML = resultado;
+			_('mensagemErroPerfilDiv').style.display = 'block';
+			_('fundoOpacoMensagemPerfilErro').style.display = 'block';
+			_q('body').style.overflow = 'hiddden';
 			$('#trocarNome').val('');
 			exibirNome();
 		});
@@ -55,7 +54,10 @@ $(document).ready(function(){
 	$('#trocarEmailBotao').click(function(){
 		$.post(perfH, { trocarEmail: trocarEmailForm.trocarEmail.value, trocarEmail2: trocarEmailForm.trocarEmail2.value},
 		function(resultado){
-			$('#emailMensagem').html(resultado).show();
+			_('mensagemPerfilDiv').innerHTML = resultado;
+			_('mensagemErroPerfilDiv').style.display = 'block';
+			_('fundoOpacoMensagemPerfilErro').style.display = 'block';
+			_q('body').style.overflow = 'hiddden';
 			$('#trocarEmail').val('');
 			$('#trocarEmail2').val('');
 			exibirEmail();
@@ -65,7 +67,10 @@ $(document).ready(function(){
 	$('#trocarSenhaBotao').click(function(){
 		$.post(perfH, { trocarSenha: trocarSenhaForm.trocarSenha.value, trocarSenha2: trocarSenhaForm.trocarSenha2.value},
 		function(resultado){
-			$('#senhaMensagem').html(resultado).show();
+			_('mensagemPerfilDiv').innerHTML = resultado;
+			_('mensagemErroPerfilDiv').style.display = 'block';
+			_('fundoOpacoMensagemPerfilErro').style.display = 'block';
+			_q('body').style.overflow = 'hiddden';
 			$('#trocarSenha').val('');
 			$('#trocarSenha2').val('');
 		});
@@ -74,10 +79,24 @@ $(document).ready(function(){
 	$('#trocarDescricaoBotao').click(function(){
 		$.post(perfH, { trocarDescricao: trocarDescricaoForm.trocarDescricao.value},
 		function(resultado){
-			$('#descricaoMensagem').html(resultado).show();
+			_('mensagemPerfilDiv').innerHTML = resultado;
+			_('mensagemErroPerfilDiv').style.display = 'block';
+			_('fundoOpacoMensagemPerfilErro').style.display = 'block';
+			_q('body').style.overflow = 'hiddden';
 			exibirDescricao();
 		});
 	});
+
+	function fecharPerfilMes(){
+		if(_('fecharPerfilMes')){
+			_('fecharPerfilMes').addEventListener('click', function(){
+				_('mensagemErroPerfilDiv').style.display = 'none';
+				_('fundoOpacoMensagemPerfilErro').style.display = 'none';
+				_q('body').style.overflow = 'auto';
+			});
+		}
+	}
+	fecharPerfilMes();
 
 	// get
 	if(_('paginaUsuarioId')){

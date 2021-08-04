@@ -115,7 +115,7 @@
 			if($checarTit){
 				$query = $this->con()->prepare("UPDATE topico SET titulo='$titulo' WHERE id='$this->topicoId'");
 				$query->execute();
-				return "Titulo editado \n";
+				return "<small class='mensagemSucesso'>Titulo editado!</small>";
 			}
 		}
 		
@@ -134,7 +134,7 @@
 				}
 				$query = $this->con()->prepare("UPDATE topico SET arquivo='$arquivo', tipoArquivo='$tipo' WHERE id='$this->topicoId'");
 				$query->execute();
-				return "Midia editada \n";
+				return "<small class='mensagemSucesso'>Midia editada!</small>";
 			}
 		}
 
@@ -142,7 +142,7 @@
 			$link = strip_tags($val);
 			$query = $this->con()->prepare("UPDATE topico SET arquivo='$link', tipoArquivo='embbedImagem' WHERE id='$this->topicoId'");
 			$query->execute();
-			return "Midia editada \n";
+			return "<small class='mensagemSucesso'>Midia editada!</small>";
 		}
 
 		public function setArquivoEmbbedVideo($val){
@@ -151,14 +151,14 @@
 			if($checarLink == 'https://www.youtube.com/watch?v='){
 				$query = $this->con()->prepare("UPDATE topico SET arquivo='$link', tipoArquivo='embbedVideo' WHERE id='$this->topicoId'");
 				$query->execute();
-				return "Midia editada \n";
+				return "<small class='mensagemSucesso'>Midia editada!</small>";
 			}
 		}
 
 		public function setArquivoNenhum(){
 			$query = $this->con()->prepare("UPDATE topico SET arquivo=NULL, tipoArquivo='semArquivo' WHERE id='$this->topicoId'");
 			$query->execute();
-			return "Midia editada \n";
+			return "<small class='mensagemSucesso'>Midia editada!</small>";
 		}
 		
 		public function setConteudo($val){
@@ -167,7 +167,7 @@
 			if($checarTit){
 				$query = $this->con()->prepare("UPDATE topico SET conteudo='$conteudo' WHERE id='$this->topicoId'");
 				$query->execute();
-				return "Conteudo editado \n";
+				return "<small class='mensagemSucesso'>Conteudo editado!</small>";
 			}
 		}
 		

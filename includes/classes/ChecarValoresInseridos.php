@@ -5,20 +5,20 @@
 	}
 	class ChecarValoresInseridos extends Conexao {
 		private $mensagemErro = [
-	/*0*/	"*Nome precisa estar entre 4 e 25 caracteres \n", 
-	/*1*/	"*Emails nao estao iguais \n",
-	/*2*/	"*Email nao esta em formato valido \n",
-	/*3*/	"*Email ja esta em uso \n",
-	/*4*/	"*Senhas nao estao iguais \n",
-	/*5*/	"*Senha precisa estar entre 5 e 25 caracteres \n",
-	/*6*/	"*Senha aceita apenas letras e numeros \n",
-	/*7*/	"*Descricao precisa estar entre 0 e 180 caracteres \n",
-	/*8*/	"*Titulo precisa estar entre 5 e 90 caracteres \n",
-	/*9*/	"*Conteudo esta vazio \n",
-	/*10*/	"*Conteudo deve conter pelo menos 2 caracteres \n",
-	/*11*/	"*Nome da comunidade precisa estar entre 3 e 25 caracteres \n",
-	/*12*/	"*Descricao deve conter ente 3 e 150 caracteres \n",
-	/*13*/	"*Descricao da comunidade esta vazia \n"];
+	/*0*/	'*Nome precisa estar entre 4 e 25 caracteres.<br />', 
+	/*1*/	'*Emails nao estao iguais.<br />',
+	/*2*/	'*Email nao esta em formato valido.<br />',
+	/*3*/	'*Email ja esta em uso.<br />',
+	/*4*/	'*Senhas nao estao iguais.<br />',
+	/*5*/	'*Senha precisa estar entre 5 e 25 caracteres.<br />',
+	/*6*/	'*Senha aceita apenas letras e numeros.<br />',
+	/*7*/	'*Descricao precisa estar entre 0 e 180 caracteres.<br />',
+	/*8*/	'*Titulo precisa estar entre 5 e 90 caracteres.<br />',
+	/*9*/	'*Conteudo esta vazio.<br />',
+	/*10*/	'*Conteudo deve conter pelo menos 2 caracteres.<br />',
+	/*11*/	'*Nome da comunidade precisa estar entre 3 e 25 caracteres.<br />',
+	/*12*/	'*Descricao deve conter entre 3 e 150 caracteres.<br />',
+	/*13*/	'*Descricao da comunidade esta vazia.<br />'];
 
 		public function checarNome($nome){
 			if(strlen($nome) < 4 || strlen($nome) > 25 || str_replace(' ', '', $nome) == ''){
@@ -64,7 +64,7 @@
 		
 		public function checarDescricao($descricao){
 			$descChec = preg_replace('/\s+/', '', $descricao);
-			if(strlen($descricao) < 0 || strlen($descricao) > 150 || $descChec == ''){
+			if(strlen($descricao) == 0 || strlen($descricao) > 150 || $descChec == ''){
 				echo $this->mensagemErro[7];
 				return false;
 			}
@@ -106,7 +106,7 @@
 				echo $this->mensagemErro[13];
 				return false;
 			}
-			if(strlen($conteudo) < 3 || strlen($conteudo > 150)){
+			if(strlen($conteudo) < 3 || strlen($conteudo) > 150){
 				echo $this->mensagemErro[12];
 				return false;
 			}

@@ -25,7 +25,7 @@
 				$foto = $this->checarArquivo->fotoCominidade($fot, $nomeUnico);
 				if($foto){
 					$this->inserirValoresNaComunidade($criadoPor, $nome, $conteudo, $foto, $nomeUnico);
-					echo "Comunidade criada!";
+					echo "<small class='mensagemSucesso'>Comunidade criada!</small>";;
 				}
 			}
 		}

@@ -24,7 +24,6 @@ if(empty($checarIncludeRequire)){
 			<input type="file" name="arquivoEditarFoto" id="arquivoEditarFoto" required><br>
 			<input type="submit" id="trocarFotoComunidadeBotao" value="trocar foto" class="btn btnAzul">
 		</form>
-		<div id="editComunidadeImagemMensagem"></div>
 	</div>
 	<div id="editarNomeCaixa">
 		<form method="POST" id="trocarNomeComForm" onsubmit="return false">
@@ -34,7 +33,6 @@ if(empty($checarIncludeRequire)){
 			<div class="editNomeComunidadeContador" style="margin-left: 40%;"></div>
 			<input type="submit" id="trocarNomeComunidadeBotao" value="trocar nome" class="btn btnAzul">
 		</form>
-		<div id="editComunidadeNomeMensagem"></div>
 	</div>
 	<div id="editarDescricaoCaixa">
 		<form method="POST" id="trocarDescricaoComForm" onsubmit="return false">
@@ -44,6 +42,10 @@ if(empty($checarIncludeRequire)){
 			<div class="editDescricaoComunidadeContador" style="margin-left: 40%;"></div>
 			<input type="submit" id="trocarDescricaoComunidadeBotao" value="trocar descricao" class="btn btnAzul">
 		</form>
-		<div id="editComunidadeDescricaoMensagem"></div>
 	</div>
 </div>
+<div class="mensagemErroDiv" id="mensagemErroEditarComunidadeDiv">
+	<div id="mensagemEditarComunidadeDiv" class="mensagemErro"></div>
+	<button id="fecharEditarComunidadeMes" class="btn btnVermelho">ok</button>
+</div>
+<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemEditarComunidadeErro"></div>

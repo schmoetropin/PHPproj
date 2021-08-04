@@ -30,5 +30,9 @@ if(empty($checarIncludeRequire)){
         <input type="password" id="regSenha2" name="regSenha2" placeholder="Confirmar Senha" required><br>
         <input type="submit" value="Registrar" class="btn btnVermelho" id="inputRegistroForm" name="inputRegistroForm">
     </form>
-    <div id="mensagemRegistro"></div>
 </div>
+<div class="mensagemErroDiv" id="mensagemErroRegDiv">
+	<div id="mensagemRegistro" class="mensagemErro"></div>
+	<button id="fecharRegistroMes" class="btn btnVermelho">ok</button>
+</div>
+<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemRegErro"></div>

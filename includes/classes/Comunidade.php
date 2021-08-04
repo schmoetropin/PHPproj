@@ -128,7 +128,7 @@
 			if($checarTitulo){
 				$query = $this->con()->prepare("UPDATE comunidade SET nome='$nome' WHERE id='$this->comunidadeId'");
 				$query->execute();
-				echo "Nome da comunidade trocado! \n";
+				echo "<small class='mensagemSucesso'>Nome da comunidade trocado!</small>";
 			}
 		}
 
@@ -140,7 +140,7 @@
 				unlink('../../'.$fotoAntiga);
 				$query = $this->con()->prepare("UPDATE comunidade SET fotoComunidade='$foto' WHERE id='$this->comunidadeId'");
 				$query->execute();
-				echo "Foto da comunidade trocada! \n";
+				echo "<small class='mensagemSucesso'>Foto da comunidade trocada!</small>";
 			}
 		}
 
@@ -150,7 +150,7 @@
 			if($checarDescricao){
 				$query = $this->con()->prepare("UPDATE comunidade SET descricao='$conteudo' WHERE id='$this->comunidadeId'");
 				$query->execute();
-				echo "Descricao da comunidade trocado! \n";
+				echo "<small class='mensagemSucesso'>Descricao da comunidade trocado!</small>";
 			}
 		}
 				

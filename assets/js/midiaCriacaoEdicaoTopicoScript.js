@@ -62,10 +62,9 @@ $(document).ready(function(){
                     var exibirArquivo = new FileReader();
                     if(extencao === 'mp4')
                         $('.previsualizacaoMidia').html("<video id='preVisMidCricTop' controls autoplay muted></video>");
-                    else if(extencao === 'jpg' || extencao === 'jpeg' || extencao === 'png' || extencao === 'gif'){
+                    else if(extencao === 'jpg' || extencao === 'jpeg' || extencao === 'png' || extencao === 'gif')
                         $('.previsualizacaoMidia').html("<img src='' id='preVisMidCricTop'>");
-                        console.log('imagem');
-                    }else
+                    else
                         $('.previsualizacaoMidia').html("<strong class='mensagemErro'>*Erro midia</strong>");
                     exibirArquivo.onload = function(e){
                         $('#preVisMidCricTop').attr('src', e.target.result);

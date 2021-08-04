@@ -4,19 +4,19 @@
 		exit();
 	}
 	class ChecarArquivo{
-		private $fotoDePerfilExtencao = array('jpg', 'jpeg', 'png');
+		private $fotoDePerfilExtencao = array('image/jpg', 'image/jpeg', 'image/png');
 		private $fotoDePerfilTamanho = 35000;
-		private $fotoComunidadeExtencao = array('jpg', 'jpeg', 'png', 'gif');
+		private $fotoComunidadeExtencao = array('image/jpg', 'image/jpeg', 'image/png', 'image/gif');
 		private $fotoComunidadeTamanho = 1000000;
-		private $videoExtencao = array('mp4', 'flv');
+		private $videoExtencao = array('video/mp4', 'video/flv');
 		private $videoTamanho = 10000000;
 		private $mensagemErro = [
-			"*Nenhum arquivo foi selecionado \n",
-			"*Extancao nao aceita \n",
-			"*Arquivo muito grande \n",
-			"*O arquivo possui erros \n",
-			"*Erro ao mover o arquivo \n",
-			"*ERRO* \n"];
+			'*Nenhum arquivo foi selecionado.<br />',
+			'*Extancao nao aceita.<br />',
+			'*Arquivo muito grande.<br />',
+			'*O arquivo possui erros.<br />',
+			'*Erro ao mover o arquivo.<br />',
+			'*ERRO*.<br />'];
 		
 		// checha, upload e retorna local da foto de perfil
 		public function fotoDePerfil($arquivo, $id){
@@ -26,6 +26,7 @@
 			$checar = $this->checarFotoDePerfil($arquivoExtencao, $arquivoTamanho, $arquivoErro);
 			if($checar){
 				$pasta = 'uploads/fotoDePerfil/';
+				$arquivoExtencao = substr($arquivoExtencao,6);
 				$localArquivo = $pasta.$id.uniqid().'.'.$arquivoExtencao;
 				$localDoArquivo = $this->moverArquivo($arquivo, $localArquivo);
 				if($localDoArquivo)
@@ -45,6 +46,7 @@
 			$checar = $this->checarFotoComunidade($arquivoExtencao, $arquivoTamanho, $arquivoErro);
 			if($checar){
 				$pasta = 'uploads/fotoComunidade/';
+				$arquivoExtencao = substr($arquivoExtencao,6);
 				$localArquivo = $pasta.$comun.uniqid().'.'.$arquivoExtencao;
 				$localDoArquivo = $this->moverArquivo($arquivo, $localArquivo);
 				if($localDoArquivo)
@@ -64,6 +66,7 @@
 			$checar = $this->checarFotoComunidade($arquivoExtencao, $arquivoTamanho, $arquivoErro);
 			if($checar){
 				$pasta = 'uploads/fotoTopico/';
+				$arquivoExtencao = substr($arquivoExtencao,6);
 				$localArquivo = $pasta.$topic.uniqid().'.'.$arquivoExtencao;
 				$localDoArquivo = $this->moverArquivo($arquivo, $localArquivo);
 				if($localDoArquivo)
@@ -83,6 +86,7 @@
 			$checar = $this->checarVideo($arquivoExtencao, $arquivoTamanho, $arquivoErro);
 			if($checar){
 				$pasta = 'uploads/videoTopico/';
+				$arquivoExtencao = substr($arquivoExtencao,6);
 				$localArquivo = $pasta.$topic.uniqid().'.'.$arquivoExtencao;
 				$localDoArquivo = $this->moverArquivo($arquivo, $localArquivo);
 				if($localDoArquivo)
@@ -106,8 +110,9 @@
 		
 		// retorna a extencao do arquivo
 		private function arquivoExtencao($arquivo){
-			$tipo = substr($arquivo['type'], 6);
-			$tipo = strtolower($tipo);
+			$finfo = finfo_open(FILEINFO_MIME_TYPE);
+			$tipo = finfo_file($finfo, $arquivo['tmp_name']);
+			finfo_close($finfo);
 			return $tipo;
 		}
 		

@@ -17,25 +17,35 @@
 	
 	// troca a foto de perfil
 	if(isset($_FILES['trocarFotoPerfil'])){
-		if($_FILES['trocarFotoPerfil']['size'] > 0)
-			$usObj->setFotoPerfil($_FILES['trocarFotoPerfil']);
+		if($_FILES['trocarFotoPerfil']['size'] > 0){
+			if($usObj->setFotoPerfil($_FILES['trocarFotoPerfil']))
+				echo 'Foto de perfil trocada.<br />';
+		}
 	}
 	
 	// troca o nome do usuario
-	if(isset($_POST['trocarNome']))
-		$usObj->setNome($_POST['trocarNome']);
-	
+	if(isset($_POST['trocarNome'])){
+		if($usObj->setNome($_POST['trocarNome']))
+			echo "<small class='mensagemSucesso'>Nome trocado!</small>";
+	}
+
 	// troca o email do usuario
-	if(isset($_POST['trocarEmail']) && isset($_POST['trocarEmail2']))
-		$usObj->setEmail($_POST['trocarEmail'], $_POST['trocarEmail2']);
+	if(isset($_POST['trocarEmail']) && isset($_POST['trocarEmail2'])){
+		if($usObj->setEmail($_POST['trocarEmail'], $_POST['trocarEmail2']))
+			echo "<small class='mensagemSucesso'>Email trocado!</small>";
+	}
 	
 	// troca a senha do usuario
-	if(isset($_POST['trocarSenha']) && isset($_POST['trocarSenha2']))
-		$usObj->setSenha($_POST['trocarSenha'], $_POST['trocarSenha2']);
+	if(isset($_POST['trocarSenha']) && isset($_POST['trocarSenha2'])){
+		if($usObj->setSenha($_POST['trocarSenha'], $_POST['trocarSenha2']))
+			echo "<small class='mensagemSucesso'>Senha trocada!</small>";
+	}
 	
 	// troca a descricao do usuario
-	if(isset($_POST['trocarDescricao']))
-		$usObj->setDescricaoPerfil($_POST['trocarDescricao']);
+	if(isset($_POST['trocarDescricao'])){
+		if($usObj->setDescricaoPerfil($_POST['trocarDescricao']))
+			echo "<small class='mensagemSucesso'>Descricao trocada!</small>";
+	}
 	
 
 	if(isset($_POST['nome'])){

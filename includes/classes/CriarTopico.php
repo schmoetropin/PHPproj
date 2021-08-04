@@ -44,15 +44,15 @@
 						$tipoArquivo = 'semArquivo';
 						$arquivo = NULL;
 					}else
-						echo 'Erro no tipo de arquivo';
+						echo '*Erro no tipo de arquivo.</br>';
 					if($tipoArquivo){
 						$this->inserirValoresNoTopico($criadoPor, $comunidade, $titulo, $tipoArquivo, $arquivo, $conteudo);
 						$this->atualizarDados->atualizarUsuarioComunidadeNTopicos($criadoPor, $comunidade, NULL, '+');
-						echo "Topico criado!";
+						echo 'Topico criado!</br>';
 					}
 				}
 			}else
-				echo "*Voce nao e inscrito nessa comunidade! \n";
+				echo '*Voce nao e inscrito nessa comunidade!<br />';
 		}
 		
 		private function checarEmbbedLink($emb){

@@ -1,4 +1,36 @@
 /*************************
+*** MENSAGENS SUBMIT
+*************************/
+.mensagemErroDiv{
+	font-size: 11px;
+	color: #EF5350;
+	position: fixed;
+	z-index: 9999;
+	display: none;
+	min-height: 100px;
+	width: 50%;
+	top: 15%;
+	left: 25%;
+	background-color: #fff;
+	border: 1px solid #DCDCDC;;
+	border-radius: 4px;
+	padding: 6px;
+}
+.mensagemErroDiv button{
+	position: absolute;
+	right: 2%;
+	bottom: 2%;
+	width: 10%;
+}
+
+.mensagemErro{
+	font-size: 11px;
+	color: #EF5350;
+}
+
+.mensagemSucesso{ color: #4DB6AC;}
+
+/*************************
 *** LIKE
 *************************/
 .LikeArea {

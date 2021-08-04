@@ -60,9 +60,23 @@ $(document).ready(function(){
 				_('regEmail2').value = '';
 				_('regSenha').value = '';
 				_('regSenha2').value = '';
+				_('mensagemErroRegDiv').style.display = 'block';
+				_('fundoOpacoMensagemRegErro').style.display = 'block';
+				_q('body').style.overfow = 'hidden';
 			}
 		);
 	});
+
+	function fecharRegistroMes(){
+		if(_('fecharRegistroMes')){
+			_('fecharRegistroMes').addEventListener('click',function(){
+				_('mensagemErroRegDiv').style.display = 'none';
+				_('fundoOpacoMensagemRegErro').style.display = 'none';
+				_q('body').style.overfow = 'auto';
+			});
+		}
+	}
+	fecharRegistroMes();
 
 	// logout
 	function logout(){
