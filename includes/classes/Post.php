@@ -27,8 +27,9 @@
 				$topObj = new Topico($noTopico);
 				$comunidade = $topObj->getNaComunidade();
 				$this->atualizarDados->atualizarUsuarioComunidadeTopicoPostsNPosts($postadoPor, $noTopico, $comunidade, $noPost, '+');
-				$this->limparTextarea();
+				return true;
 			}
+			return false;
 		}
 		
 		private function inserirValoresEmPost($postadoPor, $noTopico, $noPost, $conteudo){
@@ -41,10 +42,6 @@
 				':noPost'=> $noPost,
 				':dataPostagem'=> $data);
 			$query->execute($arr);
-		}
-		
-		private function limparTextarea(){?>
-			<script>_('postConteudo').value ='';</script><?php
 		}
 
 		public function deletarPost($id){

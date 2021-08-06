@@ -26,9 +26,11 @@
 
         public function selecionarId($nomeU, $mesa){
             $query = $this->con()->prepare("SELECT id FROM $mesa WHERE nomeUnico='$nomeU'");
-            $query->execute();
-            $row = $query->fetch(PDO::FETCH_ASSOC);
-            return $row['id'];
+            if($query->execute()){
+                $row = $query->fetch(PDO::FETCH_ASSOC);
+                return $row['id'];
+            }
+            return false;
         }
     };
 ?>

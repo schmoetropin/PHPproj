@@ -85,6 +85,11 @@
 			</div>
 			<div style="width: 100%; height: 80px;"></div>
 		</div>
-	</div><?php 
+	</div>
+	<div class="mensagemErroDiv" id="mensagemErroPerfilDiv">
+		<div id="mensagemPerfilDiv" class="mensagemErro"></div>
+		<button id="fecharPerfilMes" class="btn btnVermelho">ok</button>
+	</div>
+	<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemPerfilErro"></div><?php 
 	include('includes/footer.php');
 ?>

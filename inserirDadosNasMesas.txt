@@ -123,7 +123,6 @@ INSERT INTO `botaoLike`( `dataLike`, `logUsuario`, `noUsuario`, `noTopico`, `noP
 INSERT INTO `botaoLike`( `dataLike`, `logUsuario`, `noUsuario`, `noTopico`, `noPost`, `comunidadeTopico`) VALUES ('2020-05-30 19:44:10', '18', NULL, '24', NULL, '7');
 INSERT INTO `botaoLike`( `dataLike`, `logUsuario`, `noUsuario`, `noTopico`, `noPost`, `comunidadeTopico`) VALUES ('2020-05-30 19:44:10', '18', NULL, '25', NULL, '6');
 
-
 INSERT INTO `post`(`postadoPor`, `conteudo`, `noTopico`, `noPost`, `dataPostagem`) VALUES ('3', 'Veja os dados sobre o coronavírus no Brasil neste domingo (31), segundo levantamento exclusivo do G1 junto às secretarias estaduais de saúde. Foram registradas 28.872 mortes provocadas pela Covid-19 e 501.985 casos confirmados da doença em todo o país.', '25', NULL, '2020-05-31 11:34:46');
 INSERT INTO `post`(`postadoPor`, `conteudo`, `noTopico`, `noPost`, `dataPostagem`) VALUES ('3', 'Desde 22 de maio, o Brasil é o segundo país com mais casos confirmados de Covid-19, atrás apenas dos Estados Unidos, que registravam mais de 1,7 milhão de casos neste domingo, segundo balanço global feito pela universidade norte-americana Johns Hopkins. ', '14', NULL, '2020-05-31 11:35:06');
 INSERT INTO `post`(`postadoPor`, `conteudo`, `noTopico`, `noPost`, `dataPostagem`) VALUES ('3', ' Os EUA atingiram a marca de 500 mil casos em 10 de abril, data em que havia 18.693 mortos pela doença no país. A primeira morte entre os norte-americanos ocorreu em 6 de fevereiro. O Brasil registrou a primeira morte por Covid-19 em 16 de março.', '13', NULL, '2020-05-31 11:35:25');
@@ -205,7 +204,6 @@ INSERT INTO `post`(`postadoPor`, `conteudo`, `noTopico`, `noPost`, `dataPostagem
 INSERT INTO `post`(`postadoPor`, `conteudo`, `noTopico`, `noPost`, `dataPostagem`) VALUES ('13', 'A fala do pontífice foi a primeira em três meses feita de sua janela para a Praça de São Pedro, no Vaticano, conforme o isolamento da Itália chega ao fim. ', '6', NULL, '2020-05-31 13:49:38');
 INSERT INTO `post`(`postadoPor`, `conteudo`, `noTopico`, `noPost`, `dataPostagem`) VALUES ('13', 'As palavras do Papa foram recebidos com aplausos de centenas de pessoas na praça, muitas usando máscaras e mantendo vários metros de distância umas das outras. A praça havia sido reaberta ao público no domingo passado (24). Normalmente, dezenas de milhares de pessoas vão à praça aos domingos. ', '2', NULL, '2020-05-31 13:50:03');
     
-
 INSERT INTO `amigos`(`usuario`, `amigo`) VALUES ('3','4');
 INSERT INTO `amigos`(`usuario`, `amigo`) VALUES ('3','5');
 INSERT INTO `amigos`(`usuario`, `amigo`) VALUES ('3','6');

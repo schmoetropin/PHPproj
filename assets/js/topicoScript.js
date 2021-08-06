@@ -219,12 +219,28 @@ $(document).ready(function(){
 			data: $('#postForm').serialize(),
 			cache: false,
 			success: function(data){
-				$('#postFormMensagens').html(data);
 				$('.contadorConteudoPost').html('');
+				_('postConteudo').value = '';
+				_('mensagemErroPostDiv').style.display = 'block';
+				_('fundoOpacoMensagemPost').style.display = 'block';
+				_q('body').style.overflow = 'hidden';
+				_('mensagemPostDiv').innerHTML = data;
+				console.log(data);
 				exibirPosts();
 			}
 		});
 	});
+
+	function fecharPostMes(){
+		if(_('fecharPostMes')){
+			_('fecharPostMes').addEventListener('click',function(){
+				_('mensagemErroPostDiv').style.display = 'none';
+				_('fundoOpacoMensagemPost').style.display = 'none';
+				_q('body').style.overflow = 'auto';
+			});
+		}
+	}
+	fecharPostMes();
 
 	function contadorPostPrincipal(){
 		$('#postConteudo').on('paste change keyup', function(){
@@ -320,8 +336,11 @@ $(document).ready(function(){
 								exibirDelEditPostCaixa();
 								fecharDelEditPostCaixa();
 								delEditPost();
-								$('.comentarPostMensagens'+id).html(data);
 								$('#comentarioPost'+id).show();
+								_('mensagemErroPostDiv').style.display = 'block';
+								_('fundoOpacoMensagemPost').style.display = 'block';
+								_q('body').style.overflow = 'hidden';
+								_('mensagemPostDiv').innerHTML = data;
 							}
 						});
 					}
@@ -480,6 +499,10 @@ $(document).ready(function(){
 						exibirPosts();
 						$('.fundoOpacoPadrao').hide();
 						_q('body').style.overflow = 'auto';
+						_('mensagemErroPostDiv').style.display = 'block';
+						_('fundoOpacoMensagemPost').style.display = 'block';
+						_q('body').style.overflow = 'hidden';
+						_('mensagemPostDiv').innerHTML = data;
 					}
 				});
 			});

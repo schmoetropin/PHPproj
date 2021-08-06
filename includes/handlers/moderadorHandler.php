@@ -1,20 +1,18 @@
 <?php
-    if(empty($checarIncludeRequire)){
-        if($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'])){?>
-            <h3>Acesso negado</h3><br><small>Voce nao pode acessar esta pagina</small><?php
-            exit();
-        }
+    if($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'])){?>
+        <h3>Acesso negado</h3><br><small>Voce nao pode acessar esta pagina</small><?php
+        exit();
     }
     require_once('../includesRequire.php');
     $mFObj = new ModeradorForms();
     $modObj = new Moderador();
     $nomeU = new CriarNomeUnico();
+    $uObj = new Usuario();
 
     // Formulario para convidar alguem para moderacao de comunidade
     if(isset($_POST['logUsuario']) && isset($_POST['usuario'])){
         $lUs = $nomeU->selecionarId($_POST['logUsuario'], 'usuario');
         $us = $nomeU->selecionarId($_POST['usuario'], 'usuario');
-        $uObj = new Usuario();
         $luT = $uObj->tipoUsuario($lUs);
         $uT = $uObj->tipoUsuario($us);
         $mFObj->requisicaoModerador($_POST['logUsuario'], $_POST['usuario']);
@@ -25,11 +23,11 @@
         $mod = $nomeU->selecionarId($_POST['moderador'], 'usuario');
         $us = $nomeU->selecionarId($_POST['usuario'], 'usuario');
         $com = $nomeU->selecionarId($_POST['comunidade'], 'comunidade');
-        if(!$modObj->checarModRequerimentos($us, $com))
+        if(!$modObj->checarModRequerimentos($us, $com)){
             $modObj->enviarModRequerimento($mod, $us, $com);
-        else{?>
-            <p class='mensagemErro'>*Outro moderador ja enviou um requerimento para o usuario</p><?php 
-        }
+            echo "<small class='mensagemSucesso'>Requerimento enviado com sucesso.</small>"; 
+        }else
+            echo '*Outro moderador ja enviou um requerimento para o usuario.'; 
     }
 
     // Exibe todas as requisicoes de moderacao que foram enviadas
@@ -68,7 +66,7 @@
 
     // Moderador renuncia o cargo de determinada comunidade
     if(isset($_POST['comunModeradorId']))
-        $modObj->renunciarCargModerador($_POST['comunModeradorId']);
+        echo $modObj->renunciarCargModerador($_POST['comunModeradorId']);
     
     // Cancela requerimento enviado para moderador de detarminado usuario        
     if(isset($_POST['cancelarReqMod']))

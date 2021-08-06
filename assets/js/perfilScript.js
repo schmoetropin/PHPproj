@@ -21,7 +21,7 @@ $(document).ready(function(){
 				if(arquivo.length > 0){
 					fd.append('trocarFotoPerfil', arquivo);
 					ajax.onreadystatechange = function(evt){
-						if(ajax.readyState === 4 && ajax.status === 4){
+						if(ajax.readyState === 4 && ajax.status === 200){
 							exibirFoto();
 							_('trocarFotoPerfil').value = '';
 							_('mensagemPerfilDiv').innerHTML = this.responseText;

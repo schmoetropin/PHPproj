@@ -166,16 +166,32 @@
             $nuO = new CriarNomeUnico();
             $modId = $nuO->selecionarId($mod, 'usuario');
             $comId = $nuO->selecionarId($com, 'comunidade');
-            $usObj = new Usuario($modId);
-            $coObj = new Comunidade($comId);
-            if(isset($_SESSION['logUsuario'])){
-                $logU = $nuO->selecionarId($_SESSION['logUsuario'], 'usuario');
-                $uObj = new Usuario($logU);
-                $checUs = $uObj->getTipoUsuario();
-                if($modId == $logU){
-                    $query = $this->con()->prepare("SELECT moderador FROM comunidadeModerador WHERE comunidade='$comId'");
-                    $query->execute();
-                    if($query->rowCount() > 1){
+            if($modId && $comId){
+                $usObj = new Usuario($modId);
+                $coObj = new Comunidade($comId);
+                $comunidadeNome = $coObj->getNome();
+                if(isset($_SESSION['logUsuario'])){
+                    $logU = $nuO->selecionarId($_SESSION['logUsuario'], 'usuario');
+                    $uObj = new Usuario($logU);
+                    $checUs = $uObj->getTipoUsuario();
+                    if($modId == $logU && $checUs != 3){
+                        $query = $this->con()->prepare("SELECT moderador FROM comunidadeModerador WHERE comunidade='$comId'");
+                        $query->execute();
+                        if($query->rowCount() > 1){
+                            $query = $this->con()->prepare("SELECT comunidade FROM comunidadeModerador WHERE moderador='$modId'");
+                            $query->execute();
+                            if($query->rowCount() == 1)
+                                $usObj->setTipoUsuario('1');
+                            $query = $this->con()->prepare("SELECT id FROM comunidadeModerador WHERE moderador='$modId' AND comunidade='$comId'");
+                            $query->execute();
+                            $row = $query->fetch(PDO::FETCH_ASSOC);
+                            $id = $row['id'];
+                            $query = $this->con()->prepare("DELETE FROM comunidadeModerador WHERE id='$id'");
+                            $query->execute();
+                            return "<small class='mensagemSucesso'>Voce saiu do grupo de moderacao da comunidade $comunidadeNome</small>";
+                        }else
+                            return '*Voce e o unico moderador da comunidade '.$comunidadeNome.'.';
+                    }else if($checUs == 3){
                         $query = $this->con()->prepare("SELECT comunidade FROM comunidadeModerador WHERE moderador='$modId'");
                         $query->execute();
                         if($query->rowCount() == 1)
@@ -186,22 +202,13 @@
                         $id = $row['id'];
                         $query = $this->con()->prepare("DELETE FROM comunidadeModerador WHERE id='$id'");
                         $query->execute();
-                    }else{?>
-                        <p class='mensagemErro'>*Voce e o unico moderador da comunidade</p><?php
-                    }    
-                }else if($checUs == 3){
-                    $query = $this->con()->prepare("SELECT comunidade FROM comunidadeModerador WHERE moderador='$modId'");
-                    $query->execute();
-                    if($query->rowCount() == 1)
-                        $usObj->setTipoUsuario('1');
-                    $query = $this->con()->prepare("SELECT id FROM comunidadeModerador WHERE moderador='$modId' AND comunidade='$comId'");
-                    $query->execute();
-                    $row = $query->fetch(PDO::FETCH_ASSOC);
-                    $id = $row['id'];
-                    $query = $this->con()->prepare("DELETE FROM comunidadeModerador WHERE id='$id'");
-                    $query->execute();
+                        return "<small class='mensagemSucesso'>Moderador retirado da comunidade $comunidadeNome</small>";
+                    }else
+                        return '*Erro';
                 }
+                return '*Erro';
             }
+            return '*Erro';
         }
 
         public function removerModerador($moderador, $id){

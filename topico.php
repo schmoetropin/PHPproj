@@ -17,11 +17,15 @@
 			</form>
 			<div class="contadorConteudoPost" style="margin-left: 40%;"></div><?php 
 		}?>
-		<div id="postFormMensagens"></div>
 		<input type="hidden" id="noTopico" value="<?php echo $_GET['t'];?>">
 	<!-- POSTS -->
 		<div class="postArea"></div>
-	</div><?php
+	</div>
+	<div class="mensagemErroDiv" id="mensagemErroPostDiv">
+		<div id="mensagemPostDiv" class="mensagemErro"></div>
+		<button id="fecharPostMes" class="btn btnVermelho">ok</button>
+	</div>
+	<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemPost"></div><?php
 	// TOPICO BARRA DIREITA
 	require_once($topicoPasta.'topicoBarraDireita.php');
 	if(isset($_SESSION['logUsuario'])){

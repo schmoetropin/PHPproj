@@ -102,8 +102,3 @@ if(empty($checarIncludeRequire)){
 		</div><?php 
 	}?>
 </div>
-<div class="mensagemErroDiv" id="mensagemErroPerfilDiv">
-	<div id="mensagemPerfilDiv" class="mensagemErro"></div>
-	<button id="fecharPerfilMes" class="btn btnVermelho">ok</button>
-</div>
-<div class="fundoOpacoMensagemErro" id="fundoOpacoMensagemPerfilErro"></div>

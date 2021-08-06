@@ -40,7 +40,7 @@ $(document).ready(function(){
 				if(_('modComunCaixa').style.display == 'block')
 					_('modComunCaixa').style.display = 'none';
 				else
-				_('modComunCaixa').style.display = 'block';
+					_('modComunCaixa').style.display = 'block';
 			});
 		}
 
@@ -75,7 +75,7 @@ $(document).ready(function(){
 				var fd = new FormData(form);
 				var ajax = new XMLHttpRequest();
 				ajax.onreadystatechange = function(evt){
-					if(ajax.readyState === 4 && ajax.status === 4){
+					if(ajax.readyState === 4 && ajax.status === 200){
 						_('reqModRecebidaArea').innerHTML = this.responseText;
 						exibirModRequisicaoRecebida();
 						criarTipoUsuarioHiddenInput();
@@ -149,10 +149,11 @@ $(document).ready(function(){
 				data: $('#adicionarModeradorForm').serialize(),
 				cache: false,
 				success: function(data){
-					if(data)
-						$('#modRequerimentoFormArea').html(data);
-					else
-						exibirModRequerimentoForm();
+					exibirModRequerimentoForm();
+					_('mensagemPerfilDiv').innerHTML = data;
+					_('mensagemErroPerfilDiv').style.display = 'block';
+					_('fundoOpacoMensagemPerfilErro').style.display = 'block';
+					_q('body').style.overflow = 'hidden';
 				}
 			});
 		});
@@ -196,11 +197,12 @@ $(document).ready(function(){
 					var fd = new FormData(form);
 					var ajax = new XMLHttpRequest();
 					ajax.onreadystatechange = function(evt){
-						if(ajax.readyState === 4 && ajax.status === 4){
+						if(ajax.readyState === 4 && ajax.status === 200){
+							exibirModRequerimentoForm();
 							exibirModRequisicaoEnviada();
 							exibirModRequisicaoEnviadaUsuario();
-							exibirModRequerimentoForm();
-						}
+						}else
+							console.log('ERRO');
 					}
 					ajax.open('POST', modH);
 					ajax.send(fd);
@@ -218,12 +220,15 @@ $(document).ready(function(){
 					var fd = new FormData(form);
 					var ajax = new XMLHttpRequest();
 					ajax.onreadystatechange = function(evt){
-						if(ajax.readyState === 4 && ajax.status === 4){
-							if(this.responseText === "<p class='mensagemErro'>*Voce e o unico moderador da comunidade</p>")
-								_('sairModComunidadeMens'+id).innerHTML = this.responseText;
-							else
-								criarTipoUsuarioHiddenInput();
-						}
+						if(ajax.readyState === 4 && ajax.status === 200){
+							criarTipoUsuarioHiddenInput();
+							_('modComunCaixa').style.display = 'block';
+							_('mensagemPerfilDiv').innerHTML = this.responseText;
+							_('mensagemErroPerfilDiv').style.display = 'block';
+							_('fundoOpacoMensagemPerfilErro').style.display = 'block';
+							_q('body').style.overflow = 'hidden';
+						}else
+							console.log('ERRO');
 					}
 					ajax.open('POST', modH);
 					ajax.send(fd);

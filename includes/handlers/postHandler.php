@@ -1,9 +1,7 @@
 <?php
-	if(empty($checarIncludeRequire)){
-		if($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'])){?>
-			<h3>Acesso negado</h3><br><small>Voce nao pode acessar esta pagina</small><?php
-			exit();
-		}
+	if($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'])){?>
+		<h3>Acesso negado</h3><br><small>Voce nao pode acessar esta pagina</small><?php
+		exit();
 	}
 	require_once('../includesRequire.php');
 	$posObj = new Post();
@@ -26,7 +24,8 @@
 		$us = $nomeU->selecionarId($_SESSION['logUsuario'], 'usuario');
 		$nom = $_POST['nomeTopico'];
 		$con = $_POST['postConteudo'];
-		$posObj->postarEmTopico($us, $nom, NULL, $con);
+		if($posObj->postarEmTopico($us, $nom, NULL, $con))
+			echo "<small class='mensagemSucesso'>Post efetuado com sucesso!</small>";
 	}
 	
 	// comentar post
@@ -35,7 +34,8 @@
 		$top = $_POST['noTopico'];
 		$pos = $_POST['noPost'];
 		$con = $_POST['postConteudo'];
-		$posObj->postarEmTopico($us, $top, $pos, $con);
+		if($posObj->postarEmTopico($us, $top, $pos, $con))
+			echo "<small class='mensagemSucesso'>Comentario efetuado com sucesso!</small>";
 	}
 
 	// editar post
