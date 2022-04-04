@@ -4,12 +4,6 @@
 		exit();
 	}
     abstract class Conexao {
-        /*
-        private $DBNAME = 'id13938266_forumdb';
-        private $HOST = 'localhost';
-        private $LOGIN = 'id13938266_forumdbadminsite';
-        private $SENHA = 'M119248$p9qbd';
-        */
         private $DBNAME = 'forumdb';
         private $HOST = '127.0.0.1';
         private $LOGIN = 'root';
