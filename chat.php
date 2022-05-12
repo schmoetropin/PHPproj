@@ -29,7 +29,7 @@
             }else{ ?>
                 <a class="voltarPerfil" href="perfil.php?us=<?php echo $_GET['u'];?>"><?php
             } ?>
-                    <img src="assets/imagens/icones/arrow-118-24.png" alt="voltar" />
+                    <img src="assets/imagens/icones/arrow-97-24.png" alt="voltar" />
                 </a>
                 <div class="imagemPerfilChat">
                     <a href="perfil.php?us=<?php echo $_GET['u'];?>">
