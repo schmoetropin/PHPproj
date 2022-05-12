@@ -104,13 +104,9 @@
 				$this->tipUsCont->tipoConteudo($tipoArquivo, $arquivo, 'sim', $id, $conteudo);?>
 				<div class='topicoRodape'>
 					<input type='hidden' id='topicoNome' value='<?php echo $id;?>'>
-<<<<<<< HEAD
 					<div class='LikeArea' id='topicoLikeArea'><?php
 						$this->likeObj->likeForm($id, NULL);?>
 					</div>
-=======
-					<div class='LikeArea' id='topicoLikeArea'></div>
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				</div>
 			</div><?php
 		}
