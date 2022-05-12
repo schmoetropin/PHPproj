@@ -8,11 +8,8 @@
 		private $usuarioId;
 		private $checarValor;
 		private $checarArquivo;
-<<<<<<< HEAD
 		private $mFObj;
 		private $nomeU;
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 /*************************
 *** CONSTRUCTOR
@@ -21,11 +18,8 @@
 			if(isset($us)){
 				$this->checarValor = new checarValoresInseridos();
 				$this->checarArquivo = new checarArquivo();
-<<<<<<< HEAD
 				$this->mFObj = new ModeradorForms();
 				$this->nomeU = new CriarNomeUnico();
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$query = $this->con()->prepare("SELECT * FROM usuario WHERE id='$us'");
 				$query->execute();
 				$this->usuario = $query->fetch(PDO::FETCH_ASSOC);
@@ -49,11 +43,7 @@
 			return $row['tipoUsuario'];
 		}
 
-<<<<<<< HEAD
 		public function exibirTipoUsuarioPerfil($usuario, $tipo){
-=======
-		public function exibirTipoUsuarioPerfil($tipo){
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			if($tipo == 'usuario'){?>
 				<p class='tipoUsuario btn btnAzul'><?php echo $tipo;?></p><?php
 			}else if($tipo == 'moderador'){?>
@@ -61,14 +51,10 @@
 				<div id='modComunCaixa'>
 					<h3>Moderador</h3>
 					<img src='assets/imagens/icones/close.png' id='fecharModComunCaixa'>
-<<<<<<< HEAD
 					<div id='modComunCaixaComunidades'><?php
 						$id = $this->nomeU->selecionarId($usuario, 'usuario');
 						$this->mFObj->exibirComunidadesModerador($id);?>
 					</div>
-=======
-					<div id='modComunCaixaComunidades'></div>
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				</div><?php
 			}else{?>
 				<p class='tipoUsuario btn btnVermelho'><?php echo $tipo;?></p><?php

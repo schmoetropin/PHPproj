@@ -4,14 +4,11 @@
 		exit();
 	}
     class ExibirPost extends Conexao {
-<<<<<<< HEAD
 		private $likeObj;
 		public function __construct(){
 			$this->likeObj = new Like();
 		}
 
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
         public function exibirPosts($topico, $post = NULL, $usuario = NULL){
             if(isset($topico) && empty($post))
                 $query = $this->con()->prepare("SELECT * FROM post WHERE noTopico='$topico' AND noPost IS NULL");
@@ -99,13 +96,9 @@
 							$this->editarDeletarPostForm($postadoPor, $id, $comunidade, $row[$i]['conteudo']);
 						}
 					}?>
-<<<<<<< HEAD
 						<div class='LikeArea' id='postLikeArea<?php echo $id;?>'><?php
 							$this->likeObj->likeForm(NULL, $id);?>
 						</div>
-=======
-						<div class='LikeArea' id='postLikeArea<?php echo $id;?>'></div>
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 					</div>
 					<div class='comentarioPost' id='comentarioPost<?php echo $id;?>' style='margin-top: 0;'><?php
 					if(empty($us)){?>
@@ -161,13 +154,9 @@
 			if($numeroComentarios > 0){?>
                 <input type='hidden' id='topicoIdHidden<?php echo $post;?>' value='<?php echo $topico;?>'>
                 <input type='hidden' class='postIdHidden' value='<?php echo $post;?>'>
-<<<<<<< HEAD
                 <div id='comentariosDoPost<?php echo $post;?>'><?php
 					$this->exibirPosts($topico, $post);?>
 				</div><?php
-=======
-                <div id='comentariosDoPost<?php echo $post;?>'></div><?php
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
             }else{?>
 				<br><small style="margin: 5px 0 0 8%;">Sem comentarios</small><?php
 			}

@@ -10,13 +10,9 @@ if(empty($checarIncludeRequire)){
 		if(empty($_GET['us']) || ($_SESSION['logUsuario'] == $_GET['us'])){?>
 			<!-- LOGGED NA PROPRIA PAGINA -->
 			Descricao:
-<<<<<<< HEAD
 			<div class="exibirUsuarioDescricao"><?php
 				$usObj->getDescricaoPerfil();?>
 			</div>
-=======
-			<div class="exibirUsuarioDescricao"></div>
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			Inscricoes: 
 			<div class="usuarioInscricoes">
 				<?php echo $usObj->exibirComunidadesInscritas($logU);?>

@@ -4,11 +4,7 @@ $(document).ready(function(){
 
     function criarTipoUsuarioHiddenInput(){
 		if(_('paginaUsuarioId')){	
-<<<<<<< HEAD
 			let tipoUsuarioIH = _('paginaUsuarioId').value;
-=======
-			var tipoUsuarioIH = _('paginaUsuarioId').value;
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$.ajax({
 				type: 'POST',
 				url: perfH,
@@ -21,7 +17,6 @@ $(document).ready(function(){
 			});
 		}
 	}
-<<<<<<< HEAD
     
     
     function exibirTipoUsuario(){
@@ -31,16 +26,6 @@ $(document).ready(function(){
 			type: 'POST',
 			url: perfH,
 			data: {usuario: usuario, tipoUs: tipoUs},
-=======
-    criarTipoUsuarioHiddenInput();
-    
-    function exibirTipoUsuario(){
-		var tipoUs = _('tipoUsuarioH').value;
-		$.ajax({
-			type: 'POST',
-			url: perfH,
-			data: {tipoUs: tipoUs},
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			cache: false,
 			success(data){
 				$('#tipoUsuarioArea').html(data);
@@ -66,7 +51,6 @@ $(document).ready(function(){
 			});
 		}
 	}
-<<<<<<< HEAD
 	exibirFecharComunidadeMod();
 
     function exibirComunidadesModerador(){
@@ -135,65 +119,6 @@ $(document).ready(function(){
 
 	function exibirModRequisicaoRecebida(){
 		let recMod = _('logUsuario').value;
-=======
-
-    function exibirComunidadesModerador(){
-		var comunMod = _('paginaUsuarioId').value;
-		$.ajax({
-			type: 'POST',
-				url: modH,
-				data: {comunMod: comunMod},
-				cache: false,
-				success: function(data){
-					$('#modComunCaixaComunidades').html(data);
-					var id = _a('.comunidadeModeradorNU');
-                    if(typeof sairModerador === 'function')
-					    sairModerador(id);
-				}
-		});
-	}
-
-    function aceitarRequisicaoMod(){
-		_a('.requisicaoId').forEach(function(valores){
-			var id = valores.value;
-			_('aceitarModRequisicao'+id).addEventListener('click',function(){
-				var form = _('aceitarModRequisicaoForm'+id);
-				var fd = new FormData(form);
-				var ajax = new XMLHttpRequest();
-				ajax.onreadystatechange = function(evt){
-					if(ajax.readyState === 4 && ajax.status === 200){
-						_('reqModRecebidaArea').innerHTML = this.responseText;
-						exibirModRequisicaoRecebida();
-						criarTipoUsuarioHiddenInput();
-					}
-				}
-				ajax.open('POST',modH);
-				ajax.send(fd);
-			});
-		});
-	}
-
-	function recusarRequisicaoMod(){
-		_a('.requisicaoId').forEach(function(valores){
-			var id = valores.value;
-			$('#recusarModRequisicao').click(function(){
-				$.ajax({
-					type: 'POST',
-					url: modH,
-					data: $('#recusarModRequisicaoForm').serialize(),
-					cache: false,
-					success: function(data){
-						$('#reqModRecebidaArea').html(data);
-						exibirModRequisicaoRecebida();
-					}
-				});
-			});
-		});
-    }
-
-    function exibirModRequisicaoRecebida(){
-		var recMod = _('logUsuario').value;
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		$.ajax({
 			type: 'POST',
 			url: modH,
@@ -202,24 +127,15 @@ $(document).ready(function(){
 			success: function(data){
 				$('#reqModRecebidaArea').html(data);
 		        aceitarRequisicaoMod();
-<<<<<<< HEAD
 				recusarRequisicaoMod();
-=======
-                recusarRequisicaoMod();
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			}
 		});
     }
 	
 	function exibirModRequerimentoForm(){
 		if(_('paginaUsuario')){	
-<<<<<<< HEAD
 			let logUsuario = _('logUsuario').value;
 			let usuario = _('paginaUsuario').value;
-=======
-			var logUsuario = _('logUsuario').value;
-			var usuario = _('paginaUsuario').value;
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$.ajax({
 				type: 'POST',
 				url: modH,
@@ -235,10 +151,6 @@ $(document).ready(function(){
 			});
 		}
 	}
-<<<<<<< HEAD
-=======
-	exibirModRequerimentoForm();
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 	function enviarModRequerimentoForm(){
 		$('#enviarAdicionarModerador').click(function(){
@@ -257,16 +169,10 @@ $(document).ready(function(){
 			});
 		});
 	}
-<<<<<<< HEAD
 	enviarModRequerimentoForm();
 
 	function exibirModRequisicaoEnviada(){
 		let envMod = _('logUsuario').value;
-=======
-
-	function exibirModRequisicaoEnviada(){
-		var envMod = _('logUsuario').value;
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		$.ajax({
 			type: 'POST',
 			url: modH,
@@ -280,13 +186,8 @@ $(document).ready(function(){
 	}
 
 	function exibirModRequisicaoEnviadaUsuario(){
-<<<<<<< HEAD
 		let mod = _('logUsuario').value;
 		let reqUs = _('paginaUsuario').value;
-=======
-		var mod = _('logUsuario').value;
-		var reqUs = _('paginaUsuario').value;
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		$.ajax({
 			type: 'POST',
 			url: modH,
@@ -302,19 +203,11 @@ $(document).ready(function(){
 	function cancelarReqModEnviada(){
 		if(_q('.reqModEnviadoId')){
 			_a('.reqModEnviadoId').forEach(function(values){
-<<<<<<< HEAD
 				let id = values.value;
 				_('carcelarReqModForm'+id).addEventListener('click', function(){
 					let form = _('carcelarReqModForm'+id);
 					let fd = new FormData(form);
 					let ajax = new XMLHttpRequest();
-=======
-				var id = values.value;
-				_('carcelarReqModForm'+id).addEventListener('click', function(){
-					var form = _('carcelarReqModForm'+id);
-					var fd = new FormData(form);
-					var ajax = new XMLHttpRequest();
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 					ajax.onreadystatechange = function(evt){
 						if(ajax.readyState === 4 && ajax.status === 200){
 							exibirModRequerimentoForm();
@@ -329,7 +222,6 @@ $(document).ready(function(){
 			});
 		}
 	}
-<<<<<<< HEAD
 	cancelarReqModEnviada();
 
 	function sairModerador(){
@@ -361,32 +253,4 @@ $(document).ready(function(){
 	}
 	sairModerador();
 	
-=======
-
-	function sairModerador(ids){
-		ids.forEach(function(valores){
-			var id = valores.value;
-			if(_('recusarCargModeradorBotao'+id)){
-				_('recusarCargModeradorBotao'+id).addEventListener('click',function(){
-					var form = _('recusarCargModeradorForm'+id);
-					var fd = new FormData(form);
-					var ajax = new XMLHttpRequest();
-					ajax.onreadystatechange = function(evt){
-						if(ajax.readyState === 4 && ajax.status === 200){
-							criarTipoUsuarioHiddenInput();
-							_('modComunCaixa').style.display = 'block';
-							_('mensagemPerfilDiv').innerHTML = this.responseText;
-							_('mensagemErroPerfilDiv').style.display = 'block';
-							_('fundoOpacoMensagemPerfilErro').style.display = 'block';
-							_q('body').style.overflow = 'hidden';
-						}else
-							console.log('ERRO');
-					}
-					ajax.open('POST', modH);
-					ajax.send(fd);
-				});
-			}
-		});
-	}
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 });

@@ -24,18 +24,14 @@
 				$conteudo = FormatarValoresInseridos::formatarTexto($cont);		
 				$checarTitulo = $this->checarValores->checarTitulo($titulo);
 				$checarCont = $this->checarValores->checarConteudo($conteudo);
-<<<<<<< HEAD
 				$tipoArquivo = null;
 				$embbed = null;
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				if(isset($emb))
 					$embbed = FormatarValoresInseridos::formatarTexto($emb);
 				if($checarTitulo && $checarCont){
 					$topTempNom = $this->nomeUnico->criar($titulo, 'topico');
 					$topTempNom  = $criadoPor.$topTempNom;
 					if(isset($arq) && empty($emb)){
-<<<<<<< HEAD
 						if($tipoArquivo = $this->checarArquivo->checarTipoDeArquivo($arq)){
 							if($tipoArquivo == 'imagem')
 								$arquivo = $this->checarArquivo->fotoTopico($arq, $topTempNom);
@@ -45,35 +41,20 @@
 								$tipoArquivo = false;
 						}
 						return false;
-=======
-						$tipoArquivo = $this->checarArquivo->checarTipoDeArquivo($arq);
-						if($tipoArquivo == 'imagem'){
-							$arquivo = $this->checarArquivo->fotoTopico($arq, $topTempNom);
-						}else if($tipoArquivo == 'video'){
-							$arquivo = $this->checarArquivo->videoTopico($arq, $topTempNom);
-						}else 
-							$tipoArquivo = false;						
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 					}else if(isset($emb) && empty($arq)){
 						$tipoArquivo = $this->checarEmbbedLink($embbed);
 						$arquivo = substr($embbed, 9);					
 					}else if(empty($arq) && empty($emb)){
 						$tipoArquivo = 'semArquivo';
 						$arquivo = NULL;
-<<<<<<< HEAD
 					}else{
 						echo '*Erro no tipo de arquivo.</br>';
 						return false;
 					}
-=======
-					}else
-						echo '*Erro no tipo de arquivo.</br>';
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 					if($tipoArquivo){
 						$this->inserirValoresNoTopico($criadoPor, $comunidade, $titulo, $tipoArquivo, $arquivo, $conteudo);
 						$this->atualizarDados->atualizarUsuarioComunidadeNTopicos($criadoPor, $comunidade, NULL, '+');
 						echo 'Topico criado!</br>';
-<<<<<<< HEAD
 						return true;
 					}
 					return false;
@@ -83,12 +64,6 @@
 				echo '*Voce nao e inscrito nessa comunidade!<br />';
 				return false;
 			}
-=======
-					}
-				}
-			}else
-				echo '*Voce nao e inscrito nessa comunidade!<br />';
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 		
 		private function checarEmbbedLink($emb){
@@ -101,12 +76,7 @@
 					echo "*Isto nao e um link do youtube \n";
 					return false;
 				}
-<<<<<<< HEAD
 				return 'embbedVideo';
-=======
-				else
-					return 'embbedVideo';
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			}else
 				return false;
 		}

@@ -9,7 +9,6 @@
         if(empty($_GET['us']) || ($_SESSION['logUsuario'] == $_GET['us'])){?>
             <input type="hidden" id="logUsuario" value="<?php echo $_SESSION['logUsuario'];?>">
             <input type="hidden" id="paginaUsuario" value="nenhum">
-<<<<<<< HEAD
             <div id="reqModRecebidaArea"><?php
                 $mFObj->exibirModRequisicaoRecebida($_SESSION['logUsuario']);?>
             </div>
@@ -51,23 +50,6 @@
             </div><?php
         }
     }else{?>
-=======
-            <div id="reqModRecebidaArea"></div>
-            <div id="reqModEnviadaArea"></div>
-            <div id="checarReqAmRecEnv"></div><?php				
-        }else{
-            $checUs = $UsNullObj->tipoUsuario($logU);?>
-            <input type="hidden" id="logUsuario" value="<?php echo $_SESSION['logUsuario'];?>">
-            <input type="hidden" id="paginaUsuario" value="<?php echo $_GET['us'];?>"><?php
-            if($checUs > 1){?>
-                <div id="modRequerimentoFormArea"></div>
-                <div id="reqModUsuarioEnviadaArea"></div><?php
-            }?>
-            <small style="margin: 0 0 0 12%;">Pedidos de amizade:</small><br><br>
-            <div id="requerimentoAmigoAbaArea"></div><?php
-        }
-    }else if(empty($_SESSION['logUsuario']) && isset($_GET['us'])){?>
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
         <small style="margin: 0 0 0 7%;">*Voce nao esta logado</small><?php
     }
 ?>

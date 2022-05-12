@@ -41,12 +41,8 @@
 	// editar post
 	if(isset($_POST['editarPostTextarea'])){
 		$pOb = new Post($_POST['editPostId']);
-<<<<<<< HEAD
 		if($pOb->setConteudo($_POST['editarPostTextarea']))
 			echo "<small class='mensagemSucesso'>Comentario editado com sucesso!</small>";
-=======
-		$pOb->setConteudo($_POST['editarPostTextarea']);
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 	}
 
 	// deletar post

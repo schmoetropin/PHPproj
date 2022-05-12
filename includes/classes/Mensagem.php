@@ -5,17 +5,11 @@
 	}
 	class Mensagem extends Conexao {
 		private $checarValores;
-<<<<<<< HEAD
 		private $crNomeU;
 		
 		public function __construct(){
 			$this->checarValores = new ChecarValoresInseridos();
 			$this->crNomeU = new CriarNomeUnico();
-=======
-		
-		public function __construct(){
-			$this->checarValores = new ChecarValoresInseridos();
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 		
 		// envia mensagem
@@ -37,10 +31,7 @@
 				while($row = $query->fetch(PDO::FETCH_ASSOC)){
 					$enviadoPor = $row['enviadoPor'];
 					$mensagem = $row['mensagem'];
-<<<<<<< HEAD
 					$mensagem = chunk_split($mensagem, 55, '<br />');
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 					$data = $row['data'];
 					$usObj = new Usuario($enviadoPor);
 					$nome = $usObj->getNome();
@@ -63,7 +54,6 @@
 			}
 		}
 		
-<<<<<<< HEAD
 		public function checarTodasConversas($usuario){
 			$usId = $this->crNomeU->selecionarId($usuario, 'usuario');
 			$sql = "SELECT * FROM mensagem 
@@ -106,59 +96,6 @@
 						<h4 id='nome'><?php echo $nome;?></h4>						
 					</div>
 				</a><?php
-=======
-		// checa se alguem enviou mensagem para o usuario
-		public function checarMensagensInbox($usuario){
-			$usObj = new Usuario($usuario);
-			$usNomeU = $usObj->getNomeUnico();
-			$query = $this->con()->prepare("SELECT DISTINCT enviadoPor, enviadoPara FROM mensagem WHERE enviadoPor='$usuario' OR enviadoPara='$usuario' ORDER BY data DESC");
-			$query->execute();
-			if($query->rowCount() > 0){
-				while($row = $query->fetch(PDO::FETCH_ASSOC)){
-					if($usuario == $row['enviadoPor'])
-						$enviadoDe = $row['enviadoPara'];
-					else
-						$enviadoDe = $row['enviadoPor'];
-					$enviadoDeObj = new Usuario($enviadoDe);
-					$nome = $enviadoDeObj->getNome();
-					$foto = $enviadoDeObj->getFotoDePerfil();
-					$nomeU = $enviadoDeObj->getNomeUnico();
-					if($row['enviadoPor'] != $usuario){?>
-						<input type='hidden' class='usuarioConversa' value='<?php echo $nomeU;?>'>
-						<div id='enviadoPorUsuario<?php echo $nomeU;?>' class='enviadoPorUsuario' style='cursor: pointer;'>
-							<div id='foto'>
-								<img src='<?php echo $foto;?>'>
-							</div>
-							<h4 id='nome'><?php echo $nome;?></h4>						
-						</div>
-						<div class='caixaMensagemForm' id='caixaMensagemForm<?php echo $nomeU;?>' style='display: none;'>
-							<div id='perfilMensagem<?php echo $nomeU;?>' class='perfilMensagem'></div>
-							<input type='hidden' id='logUsuario<?php echo $nomeU;?>' value='<?php echo $usNomeU;?>'>
-							<input type='hidden' id='usuario<?php echo $nomeU;?>' value='<?php echo $nomeU;?>'>
-							<form id='mensagemForm<?php echo $nomeU;?>' method='POST' onsubmit='return false' onsubmit='this.disabled=true'>
-								<input type='hidden' name='usuarioMensagem' id='usuarioMensagem' class='usuarioMensagem' value='<?php echo $nomeU;?>'>
-								<textarea class='mensagemTextarea<?php echo $nomeU;?>' id='mensagemTextarea' name='mensagemTextarea' required></textarea>		
-								<button class='btn btnAzul enviarMensagem' id='enviarMensagem<?php echo $nomeU;?>' name='enviarMensagem'>Enviar</button>
-							</form>
-						</div><?php
-					}else{
-						$str1 = "SELECT * FROM mensagem WHERE enviadoPor='$usuario' AND enviadoPara='$enviadoDe'";
-						$str2 = "SELECT * FROM mensagem WHERE enviadoPor='$enviadoDe' AND enviadoPara='$usuario'";
-						$query1 = $this->con()->prepare($str1);
-						$query1->execute();
-						$query2 = $this->con()->prepare($str2);
-						$query2->execute();
-						if(!($query1->rowCount() > 0 && $query2->rowCount() > 0)){?>
-							<small style="margin: 4px 0 4px 25%;">
-								*<a href="perfil.php?us=<?php echo $nomeU;?>" style="text-transform: capitalize; color: #222; font-weight: bold;">
-									<?php echo $nome?>
-								</a> nao the respondeu</small><?php
-						}
-					}
-				}
-			}else{?>
-				<small style="margin: 0 0 0 7%;">*Ninguem te enviou uma mensagem</small><?php
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			}
 		}
 	};

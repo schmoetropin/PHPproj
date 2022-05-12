@@ -6,7 +6,6 @@
 	require_once($comunPasta.'comunidadeTopo.php');?>
 	<div class="comunidadeColunaPrincipal">
 		<small style="margin: 0 0 0 3%;">Topicos mais populares:</small>
-<<<<<<< HEAD
 		<div class="top4Topicos"><?php
 			$exbTop4->exibirto4Topicos($comId);
 		?></div>
@@ -14,11 +13,6 @@
 		<div class="areaTopicos"><?php
 			$exbTop->exibirTodosTopicos($comId);
 		?></div><?php 
-=======
-		<div class="top4Topicos"></div>
-		<small style="left: 3%; position: absolute;">Topicos:</small>
-		<div class="areaTopicos"></div><?php 
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		// BARRA DIREITA COMUNIDADE
 		require_once($comunPasta.'comunidadeBarraDireita.php');?>
 	</div><?php

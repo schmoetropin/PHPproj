@@ -121,27 +121,14 @@
 		
 		public function setArquivoUpload($val, $top){
 			$tipo = $this->checarArquivo->checarTipoDeArquivo($val);
-<<<<<<< HEAD
 			$arquivo = null;
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			if($tipo == 'imagem')
 				$arquivo = $this->checarArquivo->fotoTopico($val, $top);
 			else if($tipo == 'video')
 				$arquivo = $this->checarArquivo->videoTopico($val, $top);
-<<<<<<< HEAD
 			if($tipo && $arquivo){
 				if($this->getTipoArquivo() == 'imagem' || $this->getTipoArquivo() == 'video')
 					unlink('../../'.$this->getArquivo());
-=======
-			$tipoArquivo = $this->getTipoArquivo();
-			if($tipo && $arquivo){
-				$arquivoAntigo = '../../'.$this->getArquivo();
-				if($tipoArquivo != 'semArquivo' || $tipoArquivo != 'embbedImagem' || $tipoArquivo != 'embbedVideo'){
-					if(file_exists($arquivoAntigo))
-						unlink($arquivoAntigo);
-				}
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$query = $this->con()->prepare("UPDATE topico SET arquivo='$arquivo', tipoArquivo='$tipo' WHERE id='$this->topicoId'");
 				$query->execute();
 				return "<small class='mensagemSucesso'>Midia editada!</small>";
@@ -152,11 +139,8 @@
 			$link = strip_tags($val);
 			$query = $this->con()->prepare("UPDATE topico SET arquivo='$link', tipoArquivo='embbedImagem' WHERE id='$this->topicoId'");
 			$query->execute();
-<<<<<<< HEAD
 			if($this->getTipoArquivo() == 'imagem' || $this->getTipoArquivo() == 'video')
 				unlink('../../'.$this->getArquivo());
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			return "<small class='mensagemSucesso'>Midia editada!</small>";
 		}
 
@@ -166,11 +150,8 @@
 			if($checarLink == 'https://www.youtube.com/watch?v='){
 				$query = $this->con()->prepare("UPDATE topico SET arquivo='$link', tipoArquivo='embbedVideo' WHERE id='$this->topicoId'");
 				$query->execute();
-<<<<<<< HEAD
 				if($this->getTipoArquivo() == 'imagem' || $this->getTipoArquivo() == 'video')
 					unlink('../../'.$this->getArquivo());
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				return "<small class='mensagemSucesso'>Midia editada!</small>";
 			}
 		}
@@ -178,11 +159,8 @@
 		public function setArquivoNenhum(){
 			$query = $this->con()->prepare("UPDATE topico SET arquivo=NULL, tipoArquivo='semArquivo' WHERE id='$this->topicoId'");
 			$query->execute();
-<<<<<<< HEAD
 			if($this->getTipoArquivo() == 'imagem' || $this->getTipoArquivo() == 'video')
 				unlink('../../'.$this->getArquivo());
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			return "<small class='mensagemSucesso'>Midia editada!</small>";
 		}
 		

@@ -24,7 +24,6 @@
     
     // criar novo topico
     if(isset($_POST['topicoArquivoRadio'])){
-<<<<<<< HEAD
         $inpRadio = $_POST['topicoArquivoRadio'];
         $usuario = $nomeUn->selecionarId($_SESSION['logUsuario'], 'usuario');
         $comunidade = $nomeUn->selecionarId($_POST['topicoComunidade'], 'comunidade');
@@ -41,35 +40,6 @@
         else
             $link = null;
         $criTop->criarTopico($usuario, $comunidade, $titulo, $arquivo, $link, $conteudo);
-=======
-        $rad = $_POST['topicoArquivoRadio'];
-        $us = $nomeUn->selecionarId($_SESSION['logUsuario'], 'usuario');
-        $com = $nomeUn->selecionarId($_POST['topicoComunidade'], 'comunidade');
-        $tit = $_POST['tituloTopico'];
-        $con = $_POST['conteudoTopico'];
-        if($rad == 'nenhum')
-            $criTop->criarTopico($us, $com, $tit, NULL, NULL, $con);
-        else if($rad == 'upload'){
-            if($_FILES['topicoUpload']['size'] == 0)
-                $criTop->criarTopico($us, $com, $tit, NULL, NULL, $con);
-            else
-                $criTop->criarTopico($us, $com, $tit, $_FILES['topicoUpload'], NULL, $con);
-        }else if($rad == 'linkImagem'){
-            if(empty($_POST['topicoLink']))
-                $criTop->criarTopico($us, $com, $tit, NULL, NULL, $con);
-            else{
-                $link = '[*IMAGE*]'.$_POST['topicoLink'];
-                $criTop->criarTopico($us, $com, $tit, NULL, $link, $con);
-            }
-        }else if($rad == 'linkVideo'){
-            if(empty($_POST['topicoLink']))
-                $criTop->criarTopico($us, $com, $tit, NULL, NULL, $con);
-            else{
-                $link = '[*VIDEO*]'.$_POST['topicoLink'];
-                $criTop->criarTopico($us, $com, $tit, NULL, $link, $con);
-            }
-        }
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
     }
 
     // deletar topico

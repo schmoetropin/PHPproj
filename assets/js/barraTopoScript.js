@@ -38,15 +38,9 @@ if(_('botaoEsconderBarraTopo')){
 		exibirBarraTopo();
 		
 		if(_('esconderBarraTopo')){
-<<<<<<< HEAD
 			let form = _('esconderBarraTopo');		
 			let ajax = new XMLHttpRequest();
 			let fd = new FormData(form);
-=======
-			var form = _('esconderBarraTopo');		
-			var ajax = new XMLHttpRequest();
-			var fd = new FormData(form);
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			ajax.open('POST', reLoH);
 			ajax.send(fd);
 		}
@@ -83,15 +77,9 @@ if(_('botaoExibirBarraTopo')){
 		exibirBarraTopo();
 		
 		if(_('exibirBarraTopo')){	
-<<<<<<< HEAD
 			let form = _('exibirBarraTopo');		
 			let ajax = new XMLHttpRequest();
 			let fd = new FormData(form);
-=======
-			var form = _('exibirBarraTopo');		
-			var ajax = new XMLHttpRequest();
-			var fd = new FormData(form);
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			ajax.open('POST', reLoH);
 			ajax.send(fd);
 		}

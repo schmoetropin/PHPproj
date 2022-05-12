@@ -14,11 +14,7 @@
 		<form method="POST" id="editarTituloTopico" onsubmit="return false">
 			<input type="hidden" id="topPagId" name="topPagId" value="<?php echo $_GET['t'];?>">
 			<small>Titulo do topico precisa estar entre 4 e 90 caracteres</small>
-<<<<<<< HEAD
 			<input type="text" name="editarTitulo" id="editarTitulo" placeholder="Editar titulo" value="<?php echo $topTitulo;?>">
-=======
-			<input type="text" name="editarTitulo" id="editarTitulo" placeholder="Editar titulo" value="">
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			<div class="contadorEditarTopicoTitulo"></div>
 			<input type="submit" id="editarTituloTopicoBotao" class="btn btnVermelho btnEditarTopico" value="editar titulo">
 		</form><hr class="barraDivEditTop">
@@ -27,13 +23,9 @@
 			<small>Imagem/video</small><br>
 			<div class="midiaOriginal">
 				<small>Midia original</small>
-<<<<<<< HEAD
 				<div class="visualizacaoMidiaOrig"><?php
 					echo $topTUC->tipoConteudo($topTipoArquivo, $topArquivo, 'edit', $topId, 'conteudo');?>
 				</div>
-=======
-				<div class="visualizacaoMidiaOrig"></div>
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			</div>
 			<div class="midiaNova">
 				<small>Midia nova</small>

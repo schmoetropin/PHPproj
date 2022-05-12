@@ -6,18 +6,12 @@
     class ExibirTopico extends Conexao {
 		private $selecUsId;
 		private $tipUsCont;
-<<<<<<< HEAD
 		private $likeObj;
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 		public function __construct(){
 			$this->selectUsId = new CriarNomeUnico();
 			$this->tipUsCont = new TopicoTipoUsuarioConteudo();
-<<<<<<< HEAD
 			$this->likeObj = new Like();
-=======
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 
 		// exibe todos os topicos nas paginas comunidade, pesquisa, perfil

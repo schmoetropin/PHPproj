@@ -6,7 +6,6 @@
 		}
 	}?>		
 		</div>
-<<<<<<< HEAD
 		<div class="copiarEmailMens" id="copiarEmailMens">Copiar email</div>
 		<div id="enviarEmailDiv" class="enviarEmailDiv">
 			Email: <input type="text" id="emailDeContato" value="schmoemaster@gmail.com" disabled />
@@ -35,10 +34,6 @@
 					<img src="assets/imagens/icones/email-24.png" alt="email" />
 				</div>
 			</div><?php 
-=======
-		<footer>
-			<p>criado por: marcos paulo peters braga 2020</p><?php 
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			if(isset($_SESSION['logUsuario']))
 				require_once('restauracao/restIndex.php');?>
 		</footer><?php 
