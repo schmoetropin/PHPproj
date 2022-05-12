@@ -6,9 +6,13 @@ if(empty($checarIncludeRequire)){
 	}
 }
 if(isset($_SESSION['logUsuario'])){ ?>
+<<<<<<< HEAD
     <div id="areaInscricao" class="areaInscricao"><?php
         $insObj->exibirBotaoInscricao($comId, NULL);?>
     </div>
+=======
+    <div id="areaInscricao" class="areaInscricao"></div>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
     <button id="botaoCriarTopicoSm" class="btn btnVermelho botaoCriarTopico">Criar Topico</button><?php
     $uObj = new Usuario($logU);
     $checUs = $uObj->getTipoUsuario();

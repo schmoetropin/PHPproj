@@ -61,7 +61,11 @@
         }
 
         public function redirecUsNExistente($usuario){
+<<<<<<< HEAD
             $query = $this->con()->prepare("SELECT id FROM usuario WHERE id='$usuario'");
+=======
+            $query = $this->con()->prepare("SELECT id FROM comunidade WHERE id='$usuario'");
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
             $query->execute();
             if($query->rowCount() == 0){
                 header('Location: index.php');

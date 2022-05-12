@@ -57,9 +57,13 @@
                     $j[$i] = [
                         'id'=> $row['id'],
                         'usuario'=> $row['usuario'],
+<<<<<<< HEAD
                         'comunidade'=> $row['comunidade'],
                         'moderador'=> $row['moderador']
                     ];
+=======
+                        'comunidade'=> $row['comunidade']];
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
                     $i++;
                 }
                 $this->exibirRequisicaoModeradorEnviada($j);?>

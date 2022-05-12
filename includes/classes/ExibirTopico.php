@@ -6,12 +6,18 @@
     class ExibirTopico extends Conexao {
 		private $selecUsId;
 		private $tipUsCont;
+<<<<<<< HEAD
 		private $likeObj;
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 		public function __construct(){
 			$this->selectUsId = new CriarNomeUnico();
 			$this->tipUsCont = new TopicoTipoUsuarioConteudo();
+<<<<<<< HEAD
 			$this->likeObj = new Like();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 
 		// exibe todos os topicos nas paginas comunidade, pesquisa, perfil
@@ -104,9 +110,13 @@
 				$this->tipUsCont->tipoConteudo($tipoArquivo, $arquivo, 'sim', $id, $conteudo);?>
 				<div class='topicoRodape'>
 					<input type='hidden' id='topicoNome' value='<?php echo $id;?>'>
+<<<<<<< HEAD
 					<div class='LikeArea' id='topicoLikeArea'><?php
 						$this->likeObj->likeForm($id, NULL);?>
 					</div>
+=======
+					<div class='LikeArea' id='topicoLikeArea'></div>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				</div>
 			</div><?php
 		}

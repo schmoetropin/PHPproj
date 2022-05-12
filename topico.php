@@ -6,9 +6,13 @@
 	require_once($topicoPasta.'topicoTopo.php');?>
 	<div class="paginaTopico">
 	<!-- TOPICO PRINCIPAL -->
+<<<<<<< HEAD
 		<div class="paginaTopicoPrincipal"><?php
 			echo $exbTop->exibirPaginaTopico($_GET['t']);?>
 		</div><?php 
+=======
+		<div class="paginaTopicoPrincipal"></div><?php 
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		if(isset($_SESSION['logUsuario'])){?>
 	<!-- FORMULARIO POST -->	
 			<form id="postForm" method="POST" onsubmit="return false">
@@ -21,9 +25,13 @@
 		}?>
 		<input type="hidden" id="noTopico" value="<?php echo $_GET['t'];?>">
 	<!-- POSTS -->
+<<<<<<< HEAD
 		<div class="postArea"><?php
 			$ePObj->exibirPosts($_GET['t']);?>
 		</div>
+=======
+		<div class="postArea"></div>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 	</div>
 	<div class="mensagemErroDiv" id="mensagemErroPostDiv">
 		<div id="mensagemPostDiv" class="mensagemErro"></div>

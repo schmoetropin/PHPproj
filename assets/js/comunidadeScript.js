@@ -48,6 +48,7 @@ $(document).ready(function(){
 		function criarTopico(){
 			if(_('postarTopico')){	
 				_('postarTopico').addEventListener('click', function(){
+<<<<<<< HEAD
 					let form = _('postarTopicoForm');
 					let fd = new FormData(form);
 					let arquivo;
@@ -59,6 +60,19 @@ $(document).ready(function(){
 					let ajax = new XMLHttpRequest();
 					ajax.upload.addEventListener('progress', function(e){
 						let porcentagem = Math.floor((e.loaded / e.total) * 100);
+=======
+					var form = _('postarTopicoForm');
+					var fd = new FormData(form);
+					var arquivo;
+					if(_('topicoUpload').files && _('topicoUpload').files[0]){
+						arquivo = _('topicoUpload').files;
+						if(arquivo.length > 0)
+							fd.append('topicoUpload', arquivo);
+					}
+					var ajax = new XMLHttpRequest();
+					ajax.upload.addEventListener('progress', function(e){
+						var porcentagem = Math.floor((e.loaded / e.total) * 100);
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 						_('detalhesUpload').style.display = 'block';
 						_('uploadProgressoTexto').innerHTML = porcentagem+'%: '+e.loaded+' bytes de '+e.total;
 						_('uploadBarraDeProgresso').style.width = porcentagem+'%';
@@ -103,12 +117,20 @@ $(document).ready(function(){
 
 		function contadorTamanhoComunidadeTituloEDescricao(){
 			$('#tituloTopico').on('change paste keyup', function(){
+<<<<<<< HEAD
 				let nomTamanho = $('#tituloTopico').val();
+=======
+				var nomTamanho = $('#tituloTopico').val();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$('.contadorTituloTopico').html("<small style='margin-left: 40%;'>Caracteres: "+(nomTamanho.length)+'</small>');
 			});
 	
 			$('#conteudoTopico').on('change paste keyup', function(){
+<<<<<<< HEAD
 				let desTamanho = $('#conteudoTopico').val();
+=======
+				var desTamanho = $('#conteudoTopico').val();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$('.contadorConteudoTopico').html("<small style='margin-left: 40%;'>Caracteres: "+(desTamanho.length)+'</small>');
 			});
 		}
@@ -117,7 +139,11 @@ $(document).ready(function(){
 		// deletar topico
 		function deletarTopico(){
 			_a('.topicoId').forEach(function(valores){
+<<<<<<< HEAD
 				let id = valores.value;
+=======
+				var id = valores.value;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$('#deletarTopico'+id).click(function(){
 					_q('.fundoOpacoPadrao').style.display = 'block';
 					_('delTopicoCaixa'+id).style.display = 'block';
@@ -131,7 +157,10 @@ $(document).ready(function(){
 				confirmarDeleterTopico(id);
 			});
 		}
+<<<<<<< HEAD
 		deletarTopico();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 		function confirmarDeleterTopico(id){
 			$('#botaoDeletarTopico'+id).click(function(){
@@ -166,6 +195,10 @@ $(document).ready(function(){
 				}
 			});
 		}
+<<<<<<< HEAD
+=======
+		exibirBotaoInscrever()
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		
 		// INSCREVER DESISCREVER
 		function inscreverDesinscreverComunidade(){
@@ -184,11 +217,18 @@ $(document).ready(function(){
 				}); 
 			});
 		}
+<<<<<<< HEAD
 		inscreverDesinscreverComunidade();
 
 		// exibe top4 topicos da comunidade
 		function exibirTop4Topicos(){
 			let top4Topicos = 'top';
+=======
+
+		// exibe top4 topicos da comunidade
+		function exibirTop4Topicos(){
+			var top4Topicos = 'top';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$.ajax({
 				type: 'POST',
 				url: topH,
@@ -199,10 +239,18 @@ $(document).ready(function(){
 				}
 			});
 		}
+<<<<<<< HEAD
 		
 		// EXIBIR TODOS TOPICOS
 		function exibitTodosOsTopicos(){
 			let topicos = 'sim';
+=======
+		exibirTop4Topicos();
+		
+		// EXIBIR TODOS TOPICOS
+		function exibitTodosOsTopicos(){
+			var topicos = 'sim';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$.ajax({
 				type: 'POST',
 				url: topH,
@@ -215,11 +263,19 @@ $(document).ready(function(){
 				}
 			});
 		}
+<<<<<<< HEAD
+=======
+		exibitTodosOsTopicos();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		
 		// autoplay video quando mouse esta encima do topico
 		function playVideoMouseoverTopico(){
 			_a('.topicoId').forEach(function(valores){
+<<<<<<< HEAD
 				let id = valores.value;
+=======
+				var id = valores.value;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				_('topico'+id).addEventListener('mouseover', function(){
 					if(_('topicoVideo'+id))
 						_('topicoVideo'+id).play();
@@ -230,7 +286,10 @@ $(document).ready(function(){
 				});
 			});
 		}
+<<<<<<< HEAD
 		playVideoMouseoverTopico();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 		const fundo = _q('.fundoOpacoPadrao');
 		const caixEdit = _('editarComunidadeCaixa');
@@ -277,8 +336,13 @@ $(document).ready(function(){
 		function exibirPrevImagemCom(){
 			$('#arquivoEditarFoto').change(function(){
 				if(this.files && this.files[0]){
+<<<<<<< HEAD
 					let imagem = this.files[0];
 					let exibImag = new FileReader();
+=======
+					var imagem = this.files[0];
+					var exibImag = new FileReader();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 					exibImag.onload = function(e){
 						$('#editFotoComunNovaPrev').attr('src', e.target.result);
 					}
@@ -291,12 +355,21 @@ $(document).ready(function(){
 		function trocarFotoComunidade(){
 			if(_('trocarFotoComunidadeBotao')){
 				_('trocarFotoComunidadeBotao').addEventListener('click', function(){
+<<<<<<< HEAD
 					let arquivo = _('arquivoEditarFoto').files;
 					let form = _('trocarFotoComForm');
 					let fd = new FormData(form);
 					fd.append('arquivoEditarFoto', arquivo);
 					if(arquivo.length > 0){
 						let ajax = new XMLHttpRequest();
+=======
+					var arquivo = _('arquivoEditarFoto').files;
+					var form = _('trocarFotoComForm');
+					var fd = new FormData(form);
+					fd.append('arquivoEditarFoto', arquivo);
+					if(arquivo.length > 0){
+						var ajax = new XMLHttpRequest();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 						ajax.onreadystatechange = function(evt){
 							if(ajax.readyState === 4 && ajax.status === 200){
 								exibirFotoNomeDescricaoComunidade();
@@ -370,19 +443,31 @@ $(document).ready(function(){
 
 		function contadorEditTamanhoComunidadeTituloEDescricao(){
 			$('#inputEditarNome').on('change paste keyup', function(){
+<<<<<<< HEAD
 				let nomTamanho = $('#inputEditarNome').val();
+=======
+				var nomTamanho = $('#inputEditarNome').val();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$('.editNomeComunidadeContador').html('<small>Caracteres: '+(nomTamanho.length)+'</small>');
 			});
 	
 			$('#txtaEditarDescricao').on('change paste keyup', function(){
+<<<<<<< HEAD
 				let desTamanho = $('#txtaEditarDescricao').val();
+=======
+				var desTamanho = $('#txtaEditarDescricao').val();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$('.editDescricaoComunidadeContador').html('<small>Caracteres: '+(desTamanho.length)+'</small>');
 			});
 		}
 		contadorEditTamanhoComunidadeTituloEDescricao();
 
 		function exibirFotoComunidade(){
+<<<<<<< HEAD
 			let exibirFoto = 'sim';
+=======
+			var exibirFoto = 'sim';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$.ajax({
 				type: 'POST',
 				url: comH,
@@ -394,9 +479,16 @@ $(document).ready(function(){
 				}
 			});
 		}
+<<<<<<< HEAD
 
 		function exibirNomeComunidade(){
 			let exibirNome = 'sim';
+=======
+		exibirFotoComunidade();
+
+		function exibirNomeComunidade(){
+			var exibirNome = 'sim';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$.ajax({
 				type: 'POST',
 				url: comH,
@@ -408,9 +500,16 @@ $(document).ready(function(){
 				}
 			});
 		}
+<<<<<<< HEAD
 
 		function exibirDescricaoComunidade(){
 			let exibirDescricao = 'sim';
+=======
+		exibirNomeComunidade();
+
+		function exibirDescricaoComunidade(){
+			var exibirDescricao = 'sim';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$.ajax({
 				type: 'POST',
 				url: comH,
@@ -422,6 +521,10 @@ $(document).ready(function(){
 				}
 			});
 		}
+<<<<<<< HEAD
+=======
+		exibirDescricaoComunidade();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 		function exibirFotoNomeDescricaoComunidade(){
 			exibirFotoComunidade();
@@ -431,7 +534,11 @@ $(document).ready(function(){
 
 		function exibirPesquisaTopico(){
 			if(_('pesquisaTop')){
+<<<<<<< HEAD
 				let pesquisaTop = _('pesquisaTop').value;
+=======
+				var pesquisaTop = _('pesquisaTop').value;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$.ajax({
 					type: 'POST',
 					url: pesH,

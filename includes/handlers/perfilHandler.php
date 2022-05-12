@@ -79,6 +79,10 @@
 	}
 
 	if(isset($_POST['tipoUs']))
+<<<<<<< HEAD
 		echo $usObj->exibirTipoUsuarioPerfil($_POST['usuario'], $_POST['tipoUs']);
+=======
+		echo $usObj->exibirTipoUsuarioPerfil($_POST['tipoUs']);
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 ?>

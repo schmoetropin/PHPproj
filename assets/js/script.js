@@ -9,6 +9,7 @@ function _q(e){
 function _a(e){
 	return document.querySelectorAll(e);
 }
+<<<<<<< HEAD
 
 if(_('enviarEmailIcone')){
 	_('enviarEmailIcone').addEventListener('click', function(){
@@ -35,3 +36,5 @@ if(_('copiarEmailDeContato')){
 		_('copiarEmailMens').innerHTML = 'Copiar email';
 	});
 }
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36

@@ -77,11 +77,16 @@
 			$checarCont = $this->checarValores->checarConteudo($conteudo);
 			if($checarCont){
 				$query = $this->con()->prepare("UPDATE post SET conteudo='$val' WHERE id='$this->postId'");
+<<<<<<< HEAD
 				if($query->execute())
 					return true;
 				return false;
 			}
 			return false;
+=======
+				$query->execute();
+			}
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 		
 		public function setNumeroRespostas($val){

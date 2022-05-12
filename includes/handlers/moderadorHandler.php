@@ -43,7 +43,10 @@
         $modObj->exibirModRequisicaoEnviadaUsuario($mod, $reqUs);
     }
 
+<<<<<<< HEAD
     //  Exibe todas as requisicoes de moderacao que o usuario recebeu
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
     if(isset($_POST['recMod']))
         $mFObj->exibirModRequisicaoRecebida($_POST['recMod']);
 

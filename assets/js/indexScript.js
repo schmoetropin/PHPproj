@@ -2,7 +2,11 @@ $(document).ready(function(){
 	const comuH = 'includes/handlers/comunidadeHandler.php';
 	const pesH = 'includes/handlers/pesquisaHandler.php';
 	function exibirComunidades(){
+<<<<<<< HEAD
 		let comunidades = 'sim';
+=======
+		var comunidades = 'sim';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		$.ajax({
 			type: 'POST',
 			url: comuH,
@@ -14,9 +18,16 @@ $(document).ready(function(){
 			}
 		});
 	}
+<<<<<<< HEAD
 	
 	function exibirTop4Topicos(){
 		let top4TopicoIndex = 'sim';
+=======
+	exibirComunidades();
+	
+	function exibirTop4Topicos(){
+		var top4TopicoIndex = 'sim';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		$.ajax({
 			type: 'POST',
 			url: comuH,
@@ -24,6 +35,7 @@ $(document).ready(function(){
 			cache: false,
 			success: function(data){
 				$('.top4TopicosIndex').html(data);
+<<<<<<< HEAD
 			}
 		});
 	}
@@ -44,6 +56,27 @@ $(document).ready(function(){
 		}
 	}
 	playVideoMouseoverTop4Topico();
+=======
+				playVideoMouseoverTop4Topico();
+			}
+		});
+	}
+	exibirTop4Topicos();
+
+	function playVideoMouseoverTop4Topico(){
+		_a('.top4TopId').forEach(function(valores){
+			var id = valores.value;
+			_('top4TopCompleto'+id).addEventListener('mouseover', function(){
+				if(_('top4TopVideo'+id))
+					_('top4TopVideo'+id).play();
+			});
+			_('top4TopCompleto'+id).addEventListener('mouseleave', function(){
+				if(_('top4TopVideo'+id))
+					_('top4TopVideo'+id).pause();
+			});
+		});
+	}
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 	// exibe criacao de comunidade
 	if(_('botaoCriarComunidade')){
@@ -64,6 +97,7 @@ $(document).ready(function(){
 	}
 
 	//previsualizacao imagem comunidade
+<<<<<<< HEAD
 	if(_('fotoCriacaoComunidade')){
 		_('fotoCriacaoComunidade').addEventListener('change', function(e){
 			let ext = e.target.files[0].type;
@@ -75,19 +109,44 @@ $(document).ready(function(){
 			}
 		});
 	}
+=======
+	function previsualizarImagemCom(){
+		$('#fotoCriacaoComunidade').change(function(){
+			if(this.files && this.files[0]){	
+				var imagem = this.files[0];
+				var exibirArq = new FileReader();
+				exibirArq.onload = function(e){
+					$('#pevImagCom').attr('src', e.target.result);
+				}
+				exibirArq.readAsDataURL(imagem);
+			}
+		})
+	}
+	previsualizarImagemCom();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 	// criar comunidade
 	if(_('inputCriarComunidade')){
 		_('inputCriarComunidade').addEventListener('click', function(){
+<<<<<<< HEAD
 			let form = _('criarComunidadeForm');
 			let fd = new FormData(form);
 			let arquivo;
+=======
+			var form = _('criarComunidadeForm');
+			var fd = new FormData(form);
+			var arquivo;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			if(_('fotoCriacaoComunidade').files && _('fotoCriacaoComunidade').files[0]){
 				arquivo = _('fotoCriacaoComunidade').files[0];
 				if(arquivo.length > 0)
 					fd.append('fotoComunidade', arquivo);
 			}
+<<<<<<< HEAD
 			let ajax = new XMLHttpRequest();
+=======
+			var ajax = new XMLHttpRequest();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			ajax.onreadystatechange = function(evt){
 				if(ajax.readyState === 4 && ajax.status === 200){
 					_('fotoCriacaoComunidade').value = '';
@@ -95,7 +154,11 @@ $(document).ready(function(){
 					_('descricaoComunidade').value = '';
 					_q('.contadorNomeComunidade').innerHTML = '';
 					_q('.contadorDescricaoComunidade').innerHTML = '';
+<<<<<<< HEAD
 					_q('.previsualisacaoImgCom').innerHTML = '';
+=======
+					_('pevImagCom').src = '';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 					exibirComunidades();
 					_('mensagemErroComunidadeDiv').style.display = 'block';
 					_('fundoOpacoMensagemComunidadeErro').style.display = 'block';
@@ -119,12 +182,20 @@ $(document).ready(function(){
 	
 	function contadorTamanhoComunidadeTituloEDescricao(){
 		$('#nomeComunidade').on('change paste keyup', function(){
+<<<<<<< HEAD
 			let nomTamanho = $('#nomeComunidade').val();
+=======
+			var nomTamanho = $('#nomeComunidade').val();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$('.contadorNomeComunidade').html('<small>Caracteres: '+(nomTamanho.length)+'</small>');
 		});
 
 		$('#descricaoComunidade').on('change paste keyup', function(){
+<<<<<<< HEAD
 			let desTamanho = $('#descricaoComunidade').val();
+=======
+			var desTamanho = $('#descricaoComunidade').val();
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$('.contadorDescricaoComunidade').html('<small>Caracteres: '+(desTamanho.length)+'</small>');
 		});
 	}
@@ -132,7 +203,11 @@ $(document).ready(function(){
 
 	function excluirComunidade(){
 		_a('.comunidadeId').forEach(function(valores){
+<<<<<<< HEAD
 			let id = valores.value;
+=======
+			var id = valores.value;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			$('#botaoExcluirComunidade'+id).click(function(){
 				_('messConfirmDelComunidade'+id).style.display = 'block';
 				_q('.fundoOpacoPadrao').style.display = 'block';
@@ -147,7 +222,10 @@ $(document).ready(function(){
 			confirmExcluirComunidade(id);
 		});
 	}
+<<<<<<< HEAD
 	excluirComunidade();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 	function confirmExcluirComunidade(id){
 		$('#botaoConfirmacaoDeleterComunidade'+id).click(function(){

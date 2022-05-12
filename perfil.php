@@ -8,6 +8,7 @@
 	$posObj = new ExibirPost();
 	$amigObj = new Amigos();
 	$mesObj = new Mensagem();
+<<<<<<< HEAD
 	$modObj = new Moderador();
 	$mFObj = new ModeradorForms();?>
 	<input type='hidden' id="paginaUsuarioId" value="<?php echo $paginaUsuario;?>">
@@ -31,6 +32,18 @@
 			<div id='tipoUsuarioArea'><?php
 				echo $usObj->exibirTipoUsuarioPerfil($paginaUsuario, $tipoUsuario);?>
 			</div>
+=======
+	$modObj = new Moderador();?>
+	<input type='hidden' id="paginaUsuarioId" value="<?php echo $paginaUsuario;?>">
+	<div class="perfilColunaPrincipal">
+		<div class="perfilCabecalho"><h3><div id="nomeUsuarioPagina" style='color: #fff;'></div></h3></div>
+		<div class="informacaoUsuarioEsquerda">
+			<div class="fotoPerfil">
+				<div id="fotoUsuarioPagina"></div>
+			</div>
+			<div id='tipoUsuarioHiddenInput'></div>
+			<div id='tipoUsuarioArea'></div>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			<ul>
 				<?php require_once($perfilPasta.'perfilInformacaoUsuario.php')?>
 			</ul>
@@ -62,13 +75,18 @@
 	------------------------------------>
 			<div class="cAmigos">
 				<div style="margin-top: 20px; padding: 0 8px 0 8px;" class="divConteMarg">
+<<<<<<< HEAD
 					<div id="listaAmigos"><?php
 						$amigObj->exibirAmigos($pagUsId);?>
 					</div>
+=======
+					<div id="listaAmigos"></div>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				</div>
 			</div>
 	<!-----------------------------------
 	--- MENSAGEM
+<<<<<<< HEAD
 	------------------------------------><?php
 			if(isset($_SESSION['logUsuario'])){
 				if(empty($_GET['us']) || ($_SESSION['logUsuario'] == $_GET['us'])){ ?>
@@ -93,6 +111,29 @@
 					</div>
 				</div><?php
 			} ?>
+=======
+	------------------------------------>
+			<div class="cMensagens">
+				<div style="margin-top: 20px; padding: 0 8px 0 8px;" class="divConteMarg"><?php
+					if(isset($_SESSION['logUsuario'])){
+						if(empty($_GET['us']) || ($_SESSION['logUsuario'] == $_GET['us'])){
+							$mesObj->checarMensagensInbox($logU);
+						}else{?>
+							<div id="perfilMensagemArea"></div>
+							<input type="hidden" id="logUsuario" value="<?php echo $_SESSION['logUsuario'];?>">
+							<input type="hidden" id="usuario" value="<?php echo $_GET['us'];?>">
+							<form id="mensagemForm" method="POST" onsubmit="return false">
+								<input type="hidden" name="usuarioMensagem" id="usuarioMensagem" value="<?php echo $_GET['us'];?>">
+								<textarea id="mensagemTextarea" name="mensagemTextarea" required></textarea>		
+								<button class="btn btnAzul" id="botaoEnviarMensagem" name="botaoEnviarMensagem">enviar</button>
+							</form><?php 
+						}
+					}else{?>
+						<small style="margin: 0 0 0 7%;">*Voce nao esta logado, nao pode enviar mensagens</small><?php
+					}?>
+				</div>
+			</div>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 	<!-----------------------------------
 	--- REQUERIMENTOS
 	------------------------------------>

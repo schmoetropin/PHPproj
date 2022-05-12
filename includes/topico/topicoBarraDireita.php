@@ -15,9 +15,13 @@
 		</div>
 		</a>
 		<p><?php echo $comDesc;?></p>
+<<<<<<< HEAD
 		<div id="inscreverComunidadeTopico"><?php
 			$insObj->exibirBotaoInscricao(NULL, $_GET['t']);?>
 		</div>
+=======
+		<div id="inscreverComunidadeTopico"></div>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 	</div>
 	<div class="topicoComunidadeModeradores">
 		<div class="cabecalho"><h3>Moderadores</h3></div>

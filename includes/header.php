@@ -42,7 +42,11 @@
 				<ul id="altaResolucaoUlBarraTopo">
 					<li><a href="index.php"><img src="assets/imagens/icones/home.png"></a></li><?php		
 					if(isset($_SESSION['logUsuario'])){?>
+<<<<<<< HEAD
 						<li><a href="perfil.php"><img src="assets/imagens/icones/user.png"></a></li>
+=======
+						<li><a href="perfil.php"><img src="<?php echo $usObj->getFotoDePerfil();?>"></a></li>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 						<li><button class="btnInvisivel botaoLogout"><img src="assets/imagens/icones/logout.png" id="botaoLogout"></button></li><?php 	
 					}else if(empty($_SESSION['logUsuario'])){?>
 						<li><button id="botaoLogin" class="btnInvisivel botaoLogin"><img src="assets/imagens/icones/login.png"></button></li>
@@ -55,7 +59,11 @@
 					<img src="assets/imagens/icones/close.png" id="fecharCaixaBaixRes" class="botaoFecharPadrao">
 					<li><a href="index.php"><img src="assets/imagens/icones/home.png"> Index</a></li><?php	
 					if(isset($_SESSION['logUsuario'])){?>
+<<<<<<< HEAD
 						<li><a href="perfil.php"><img src="assets/imagens/icones/user.png"> Perfil</a></li>
+=======
+						<li><a href="perfil.php"><img src="<?php echo $usObj->getFotoDePerfil();?>"> Perfil</a></li>
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 						<li><button class="btnInvisivel botaoLogout"><img src="assets/imagens/icones/logout.png" id="botaoLogout"> Logout</button></li>
 						</ul>
 						<div id='logoutS'></div><?php 
@@ -76,6 +84,10 @@
 					</form><?php
 					if(isset($_SESSION['logUsuario'])){?>
 						<!-- BOTAO PERFIL -->
+<<<<<<< HEAD
 						<a href="perfil.php" class="linkPerfilEscondido"><img src="assets/imagens/icones/user.png"></a><?php 
+=======
+						<a href="perfil.php" class="linkPerfilEscondido"><img src="<?php echo $usObj->getFotoDePerfil();?>"></a><?php 
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 					}?>
 				</div>

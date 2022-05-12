@@ -14,16 +14,22 @@ $redPag->redirecComNExistente($comId);
 $comObj = new Comunidade($comId);
 $topObj = new Topico();
 $modObj = new Moderador();
+<<<<<<< HEAD
 $exbTop = new ExibirTopico();
 $exbTop4 = new ExibirTop4Topicos();
 
 $insObj = new Inscrever();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 
 if(isset($_SESSION['logUsuario']))
 	$logU = $nomU->selecionarId($_SESSION['logUsuario'], 'usuario');
 
 $nome = $comObj->getNome();
+<<<<<<< HEAD
 $fotoComunidade = $comObj->getFotoComunidade();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 $descricao = $comObj->getDescricao();
 $data = $comObj->getDataCriacao();
 $numeroTopicos = $comObj->getNumeroTopicos();
@@ -37,9 +43,13 @@ $num = rand(1, 6);?>
 	<div class="inscreverCriarTopicoResBaixa">
 		<?php require_once('comunidadeBarDirCriarTopInsc.php');?>
 	</div>
+<<<<<<< HEAD
 	<div class="imagemComunidade" id="imagemComunidade">
 		<img src="<?php echo $fotoComunidade;?>" alt="fotoComunidade" />
 	</div><?php
+=======
+	<div class="imagemComunidade" id="imagemComunidade"></div><?php
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 	if(isset($_SESSION['logUsuario']) && empty($_GET['resultado'])){
 		$uObj = new Usuario($logU);
 		$checUs = $uObj->getTipoUsuario();
@@ -47,8 +57,12 @@ $num = rand(1, 6);?>
 			<button class="btn btnLaranja" id="trocarFotoComunidade">trocar foto</button><?php 
 		}
 	}?>
+<<<<<<< HEAD
 	<h2 id="nomeComunidade"><?php
 		echo $nome;?></h2><?php
+=======
+	<h2 id="nomeComunidade"></h2><?php
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 	if(isset($_SESSION['logUsuario']) && empty($_GET['resultado'])){
 		$uObj = new Usuario($logU);
 		$checUs = $uObj->getTipoUsuario();

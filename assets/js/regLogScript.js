@@ -1,8 +1,13 @@
 $(document).ready(function(){
 	// exibe login
 	function exibirCaixaLogin(){
+<<<<<<< HEAD
 		let log = _a('.botaoLogin');
 		for(let i = 0; i < log.length; i++){
+=======
+		const log = _a('.botaoLogin');
+		for(var i = 0; i < log.length; i++){
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			log[i].addEventListener('click', function(){
 				if(_('caixaLogin').style.display == 'block')
 					_('caixaLogin').style.display = 'none';
@@ -15,9 +20,15 @@ $(document).ready(function(){
 
 	// exibe e fechar registrar
 	function exibirFecharCaixaRegistro(){
+<<<<<<< HEAD
 		let reg = _a('.botaoRegistro');
 
 		for(let i = 0; i < reg.length; i++){
+=======
+		const reg = _a('.botaoRegistro');
+
+		for(var i = 0; i < reg.length; i++){
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			reg[i].addEventListener('click', function(){
 				_('caixaRegistro').style.display = 'block';
 				_q('.fundoOpacoPadrao').style.display = 'block';
@@ -82,7 +93,11 @@ $(document).ready(function(){
 	function logout(){
 		$('.botaoLogout').each(function(){
 			$(this).click(function(){
+<<<<<<< HEAD
 				let deslogarConta = 'sim';
+=======
+				var deslogarConta = 'sim';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$.ajax({
 					type: 'POST',
 					url: regLogH,
@@ -96,7 +111,11 @@ $(document).ready(function(){
 		});
 		$('#botaoLogoutPerfil').each(function(){
 			$(this).click(function(){
+<<<<<<< HEAD
 				let deslogarConta = 'sim';
+=======
+				var deslogarConta = 'sim';
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 				$.ajax({
 					type: 'POST',
 					url: regLogH,

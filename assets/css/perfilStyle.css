@@ -313,6 +313,7 @@
 	width: 0;
 }
 
+<<<<<<< HEAD
 .cMensagens .abrirChatBotao {
 	display: inline-block; 
 	margin: 6% 0 0 40%; 
@@ -320,6 +321,39 @@
 	width: 10em; 
 	line-height: 4em;
 
+=======
+.cMensagens #perfilMensagemArea,
+.cMensagens .profileMessageArea {
+	width: 96%;
+	margin: 12px 2%;
+	height: 320px;
+	border: 1px solid #DCDCDC;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding: 5px;
+	word-break: break-word;
+}
+
+.cMensagens #mensagemTextarea,
+.cMensagens .messageTextArea {
+	width: 80%;
+	margin-left: 2%;
+	height: 3em;
+	float: left;
+	padding: 5px;
+	border-radius: 4px;
+	border: 1px solid #DCDCDC; 
+}
+
+.cMensagens #mensagemTextarea:required,
+.cMensagens .messageTextArea:required{ box-shadow: none;}
+
+.cMensagens #botaoEnviarMensagem,
+.cMensagens .sendMessageButton {
+	height: 4em;
+	width: 15%;
+	margin-left: 10px;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 }
 
 .cAmigos .usAmigo {

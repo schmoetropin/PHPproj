@@ -20,6 +20,7 @@
 		
 		// checha, upload e retorna local da foto de perfil
 		public function fotoDePerfil($arquivo, $id){
+<<<<<<< HEAD
 			if($arquivo['size'] > 0){
 				$arquivoExtencao = $this->arquivoExtencao($arquivo);
 				$arquivoTamanho = $this->arquivoTamanho($arquivo);
@@ -38,10 +39,29 @@
 			}
 			echo $this->mensagemErro[0];
 			return false;
+=======
+			$arquivoExtencao = $this->arquivoExtencao($arquivo);
+			$arquivoTamanho = $this->arquivoTamanho($arquivo);
+			$arquivoErro = $this->arquivoErro($arquivo);
+			$checar = $this->checarFotoDePerfil($arquivoExtencao, $arquivoTamanho, $arquivoErro);
+			if($checar){
+				$pasta = 'uploads/fotoDePerfil/';
+				$arquivoExtencao = substr($arquivoExtencao,6);
+				$localArquivo = $pasta.$id.uniqid().'.'.$arquivoExtencao;
+				$localDoArquivo = $this->moverArquivo($arquivo, $localArquivo);
+				if($localDoArquivo)
+					return $localDoArquivo;
+				else
+					return false;
+			}
+			else
+				return false;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 		
 		// checha, upload e retorna local da foto da comunidade
 		public function fotoCominidade($arquivo, $comun){
+<<<<<<< HEAD
 			if($arquivo['size'] > 0){
 				$arquivoTamanho = $this->arquivoTamanho($arquivo);
 				$arquivoExtencao = $this->arquivoExtencao($arquivo);
@@ -60,10 +80,29 @@
 			}
 			echo $this->mensagemErro[0];
 			return false;
+=======
+			$arquivoExtencao = $this->arquivoExtencao($arquivo);
+			$arquivoTamanho = $this->arquivoTamanho($arquivo);
+			$arquivoErro = $this->arquivoErro($arquivo);
+			$checar = $this->checarFotoComunidade($arquivoExtencao, $arquivoTamanho, $arquivoErro);
+			if($checar){
+				$pasta = 'uploads/fotoComunidade/';
+				$arquivoExtencao = substr($arquivoExtencao,6);
+				$localArquivo = $pasta.$comun.uniqid().'.'.$arquivoExtencao;
+				$localDoArquivo = $this->moverArquivo($arquivo, $localArquivo);
+				if($localDoArquivo)
+					return $localDoArquivo;
+				else
+					return false;
+			}
+			else
+				return false;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 		
 		// checha, upload e retorna local da foto do topico
 		public function fotoTopico($arquivo, $topic){
+<<<<<<< HEAD
 			if($arquivo['size'] > 0){
 				$arquivoExtencao = $this->arquivoExtencao($arquivo);
 				$arquivoTamanho = $this->arquivoTamanho($arquivo);
@@ -82,10 +121,29 @@
 			}
 			echo $this->mensagemErro[0];
 			return false;
+=======
+			$arquivoExtencao = $this->arquivoExtencao($arquivo);
+			$arquivoTamanho = $this->arquivoTamanho($arquivo);
+			$arquivoErro = $this->arquivoErro($arquivo);
+			$checar = $this->checarFotoComunidade($arquivoExtencao, $arquivoTamanho, $arquivoErro);
+			if($checar){
+				$pasta = 'uploads/fotoTopico/';
+				$arquivoExtencao = substr($arquivoExtencao,6);
+				$localArquivo = $pasta.$topic.uniqid().'.'.$arquivoExtencao;
+				$localDoArquivo = $this->moverArquivo($arquivo, $localArquivo);
+				if($localDoArquivo)
+					return $localDoArquivo;
+				else
+					return false;
+			}
+			else
+				return false;
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 		
 		// checha, upload e retorna local do video do topico
 		public function videoTopico($arquivo, $topic){
+<<<<<<< HEAD
 			if($arquivo['size'] > 0){	
 				$arquivoExtencao = $this->arquivoExtencao($arquivo);
 				$arquivoTamanho = $this->arquivoTamanho($arquivo);
@@ -104,6 +162,23 @@
 			}
 			echo $this->mensagemErro[0];
 			return false;			
+=======
+			$arquivoExtencao = $this->arquivoExtencao($arquivo);
+			$arquivoTamanho = $this->arquivoTamanho($arquivo);
+			$arquivoErro = $this->arquivoErro($arquivo);
+			$checar = $this->checarVideo($arquivoExtencao, $arquivoTamanho, $arquivoErro);
+			if($checar){
+				$pasta = 'uploads/videoTopico/';
+				$arquivoExtencao = substr($arquivoExtencao,6);
+				$localArquivo = $pasta.$topic.uniqid().'.'.$arquivoExtencao;
+				$localDoArquivo = $this->moverArquivo($arquivo, $localArquivo);
+				if($localDoArquivo)
+					return $localDoArquivo;
+				else
+					return false;
+			}else
+				return false;			
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 		}
 		
 		//checa tipo de arquivo, video ou imagem
@@ -140,6 +215,13 @@
 		
 		// checa tamanho, extencao e se a foto de perfil contem erros
 		private function checarFotoDePerfil($extencao, $tamanho, $erro){
+<<<<<<< HEAD
+=======
+			if($tamanho == 0){
+				echo $this->mensagemErro[0];
+				return false;
+			}
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			if(!in_array($extencao, $this->fotoDePerfilExtencao)){
 				echo $this->mensagemErro[1];
 				return false;
@@ -157,6 +239,13 @@
 		
 		// checa tamanho, extencao e se a foto da comunidade contem erros
 		private function checarFotoComunidade($extencao, $tamanho, $erro){
+<<<<<<< HEAD
+=======
+			if($tamanho == 0){
+				echo $this->mensagemErro[0];
+				return false;
+			}
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			if(!in_array($extencao, $this->fotoComunidadeExtencao)){
 				echo $this->mensagemErro[1];
 				return false;
@@ -174,6 +263,13 @@
 		
 		// checa tamanho, extencao e se o video do topico contem erros
 		private function checarVideo($extencao, $tamanho, $erro){
+<<<<<<< HEAD
+=======
+			if($tamanho == 0){
+				echo $this->mensagemErro[0];
+				return false;
+			}
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			if(!in_array($extencao, $this->videoExtencao)){
 				echo $this->mensagemErro[1];
 				return false;

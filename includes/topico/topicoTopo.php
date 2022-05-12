@@ -10,17 +10,23 @@
 	$redPag->redirecTopNExistente($_GET['t']);
 	
 	$topObj = new Topico($_GET['t']);
+<<<<<<< HEAD
 	$topTUC = new TopicoTipoUsuarioConteudo();
     $exbTop = new ExibirTopico();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 	$comId = $topObj->getNaComunidade();
 	$comObj = new Comunidade($comId);
 	$comunidade = $comObj->getNomeUnico();
 	$modObj = new Moderador();
 	$posObj = new Post(NULL);
 	$likObj = new Like();
+<<<<<<< HEAD
 	$ePObj = new ExibirPost();
 
 	$insObj = new Inscrever();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 	
 	$comNome = $comObj->getNome();
 	$comDesc = $comObj->getDescricao();
@@ -28,9 +34,12 @@
 //	$sectionModerators = $comObj->getModerators();
 	
 	$topTitulo = $topObj->getTitulo();
+<<<<<<< HEAD
 	$topId = $topObj->getId();
 	$topTipoArquivo = $topObj->getTipoArquivo();
 	$topArquivo = $topObj->getArquivo();
+=======
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 ?>
 <div class="topicoIndice">
 	<a href="index.php">Index</a> / 

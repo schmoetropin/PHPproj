@@ -8,6 +8,10 @@
         private $LOGIN = 'root';
         private $SENHA = '';
         private $DBNAME = 'forumdb';
+<<<<<<< HEAD
+=======
+        
+>>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
         private $con;
 
         public function __construct(){
