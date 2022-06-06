@@ -15,13 +15,9 @@ if(empty($checarIncludeRequire)){
 			<input type="hidden" id="comunidade" name="comunidade" value="<?php echo $_GET['c']?>">
 			<div class="fotoRec">
 				<small>Foto recente:</small>
-<<<<<<< HEAD
 				<div class="editFotoComunRecente">
 					<img src="<?php echo $fotoComunidade;?>" alt="imagemEditComun" />
 				</div>
-=======
-				<div class="editFotoComunRecente"></div>
->>>>>>> aae9fa4188d917c0d2296f2cef7d8ff6d96d3f36
 			</div>
 			<div class="fotoNov">
 				<small>Foto nova:</small>
