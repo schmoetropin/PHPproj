@@ -63,7 +63,13 @@
 			<div class="cAmigos">
 				<div style="margin-top: 20px; padding: 0 8px 0 8px;" class="divConteMarg">
 					<div id="listaAmigos"><?php
-						$amigObj->exibirAmigos($pagUsId);?>
+						if(isset($_SESSION['logUsuario'])){
+							if(empty($_GET['us']) || $_SESSION['logUsuario'] == $_GET['us'])
+								$amigObj->exibirAmigos($logU);
+							else
+								$amigObj->exibirAmigos($get);
+						}else
+							$amigObj->exibirAmigos($get);?>
 					</div>
 				</div>
 			</div>
